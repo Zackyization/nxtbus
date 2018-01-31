@@ -24,15 +24,7 @@
 @property int busDensity;
 
 
--(NSString *)getBusNumber;
--(NSString *)getBusStopID;
--(CLLocation *)getBusLocation;
-
 -(NSMutableDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID;
--(NSArray *)getBusStopServiceNumbers;
-
--(float)getTimeRemaining; //RECONSIDER
--(int)getBusDensity;
 -(BOOL)isBusHandicap;
 
 -(int)getNextTimeRemainingFor:(NSString *)busNumber atBusStop:(NSString *)busStopID;

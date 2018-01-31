@@ -12,36 +12,6 @@
 @implementation ZJBusArrival
 
 
--(NSString *)getBusNumber {
-    return self.busNumber;
-}
-
--(NSString *)getBusStopID {
-    return self.busStopID;
-}
-
--(CLLocation *)getBusLocation {
-    return self.busLocation;
-}
-
-
--(NSArray *)getBusStopServiceNumbers {
-    return self.busStopServiceNumbers;
-}
-
-
--(float)getTimeRemaining {
-    return self.timeRemaining;
-}
-
--(int)getBusDensity {
-    return self.busDensity;
-}
-
--(BOOL)isBusHandicap {
-    return self;
-}
-
 -(NSMutableDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID {
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://arrivelah.herokuapp.com/?id=%@", busStopID];
