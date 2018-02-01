@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E31201A35ED001FC940 /* AppDelegate.m */; };
-		3D002E35201A35ED001FC940 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E34201A35ED001FC940 /* ViewController.m */; };
 		3D002E38201A35ED001FC940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E36201A35ED001FC940 /* Main.storyboard */; };
 		3D002E3A201A35ED001FC940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E39201A35ED001FC940 /* Assets.xcassets */; };
 		3D002E3D201A35ED001FC940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E3B201A35ED001FC940 /* LaunchScreen.storyboard */; };
 		3D002E40201A35ED001FC940 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E3F201A35ED001FC940 /* main.m */; };
 		3D002E4A201A35ED001FC940 /* nxtbusUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E49201A35ED001FC940 /* nxtbusUITests.m */; };
+		3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1773201CDA7900F464FF /* CoreLocation.framework */; };
+		3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1775201CDA8900F464FF /* MapKit.framework */; };
+		3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */; };
+		3D9C0FAB201B9DBA003CA991 /* BusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +33,6 @@
 		3D002E2D201A35ED001FC940 /* nxtbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nxtbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E30201A35ED001FC940 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D002E31201A35ED001FC940 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3D002E33201A35ED001FC940 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3D002E34201A35ED001FC940 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3D002E37201A35ED001FC940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D002E39201A35ED001FC940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D002E3C201A35ED001FC940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +41,12 @@
 		3D002E45201A35ED001FC940 /* nxtbusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nxtbusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E49201A35ED001FC940 /* nxtbusUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nxtbusUITests.m; sourceTree = "<group>"; };
 		3D002E4B201A35ED001FC940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D9B1773201CDA7900F464FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3D9B1775201CDA8900F464FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBusArrival.m; sourceTree = "<group>"; };
+		3D9C0FA3201B8EB8003CA991 /* ZJBusArrival.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBusArrival.h; sourceTree = "<group>"; };
+		3D9C0FA9201B9DBA003CA991 /* BusesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusesViewController.h; sourceTree = "<group>"; };
+		3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */,
+				3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +75,7 @@
 				3D002E2F201A35ED001FC940 /* nxtbus */,
 				3D002E48201A35ED001FC940 /* nxtbusUITests */,
 				3D002E2E201A35ED001FC940 /* Products */,
+				3D9B1772201CDA7900F464FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +91,12 @@
 		3D002E2F201A35ED001FC940 /* nxtbus */ = {
 			isa = PBXGroup;
 			children = (
+				3D5171E72021C5C400F267F5 /* JSON */,
+				3D9C0FA3201B8EB8003CA991 /* ZJBusArrival.h */,
+				3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */,
 				3D002E30201A35ED001FC940 /* AppDelegate.h */,
 				3D002E31201A35ED001FC940 /* AppDelegate.m */,
-				3D002E33201A35ED001FC940 /* ViewController.h */,
-				3D002E34201A35ED001FC940 /* ViewController.m */,
+				3D9C0FA5201B8EBE003CA991 /* View Controllers */,
 				3D002E36201A35ED001FC940 /* Main.storyboard */,
 				3D002E39201A35ED001FC940 /* Assets.xcassets */,
 				3D002E3B201A35ED001FC940 /* LaunchScreen.storyboard */,
@@ -101,6 +113,31 @@
 				3D002E4B201A35ED001FC940 /* Info.plist */,
 			);
 			path = nxtbusUITests;
+			sourceTree = "<group>";
+		};
+		3D5171E72021C5C400F267F5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		3D9B1772201CDA7900F464FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D9B1775201CDA8900F464FF /* MapKit.framework */,
+				3D9B1773201CDA7900F464FF /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D9C0FA5201B8EBE003CA991 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D9C0FA9201B9DBA003CA991 /* BusesViewController.h */,
+				3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D002E35201A35ED001FC940 /* ViewController.m in Sources */,
+				3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */,
+				3D9C0FAB201B9DBA003CA991 /* BusesViewController.m in Sources */,
 				3D002E40201A35ED001FC940 /* main.m in Sources */,
 				3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */,
 			);
