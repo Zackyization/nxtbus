@@ -7,16 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CDEF0E044F13BDFC83FDB68 /* libPods-nxtbusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */; };
 		3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E31201A35ED001FC940 /* AppDelegate.m */; };
 		3D002E38201A35ED001FC940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E36201A35ED001FC940 /* Main.storyboard */; };
 		3D002E3A201A35ED001FC940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E39201A35ED001FC940 /* Assets.xcassets */; };
 		3D002E3D201A35ED001FC940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E3B201A35ED001FC940 /* LaunchScreen.storyboard */; };
 		3D002E40201A35ED001FC940 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E3F201A35ED001FC940 /* main.m */; };
 		3D002E4A201A35ED001FC940 /* nxtbusUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E49201A35ED001FC940 /* nxtbusUITests.m */; };
+		3D56545B2024E68A0095C20C /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654552024E6850095C20C /* RobotoCondensed-Italic.ttf */; };
+		3D56545C2024E68A0095C20C /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654562024E6860095C20C /* RobotoCondensed-Regular.ttf */; };
+		3D56545D2024E68A0095C20C /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654572024E6860095C20C /* RobotoCondensed-Bold.ttf */; };
+		3D56545E2024E68A0095C20C /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654582024E6870095C20C /* RobotoCondensed-Light.ttf */; };
+		3D56545F2024E68A0095C20C /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654592024E6880095C20C /* RobotoCondensed-LightItalic.ttf */; };
+		3D5654602024E68A0095C20C /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D56545A2024E6890095C20C /* RobotoCondensed-BoldItalic.ttf */; };
+		3D5654622025F57E0095C20C /* BusDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654612025F57E0095C20C /* BusDB.db */; };
+		3D565464202608F40095C20C /* bus_stop_services.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D565463202608F40095C20C /* bus_stop_services.json */; };
 		3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1773201CDA7900F464FF /* CoreLocation.framework */; };
 		3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1775201CDA8900F464FF /* MapKit.framework */; };
 		3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */; };
 		3D9C0FAB201B9DBA003CA991 /* BusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */; };
+		3DCF4EC42022BC1000520A29 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCF4EC32022BC1000520A29 /* libsqlite3.dylib */; };
+		3DD6997B202A29E9008DE259 /* busStopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD6997A202A29E8008DE259 /* busStopCell.xib */; };
+		3DD6997E202A2FFE008DE259 /* busStopCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6997D202A2FFE008DE259 /* busStopCellView.m */; };
+		4F335B943F0082DCC7E8DE9C /* libPods-nxtbus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 428C902A71B926E2DA27312F /* libPods-nxtbus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22D349D9F0458271821C9738 /* Pods-nxtbus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbus.release.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus.release.xcconfig"; sourceTree = "<group>"; };
+		23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nxtbusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E2D201A35ED001FC940 /* nxtbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nxtbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E30201A35ED001FC940 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D002E31201A35ED001FC940 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -41,12 +56,28 @@
 		3D002E45201A35ED001FC940 /* nxtbusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nxtbusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E49201A35ED001FC940 /* nxtbusUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nxtbusUITests.m; sourceTree = "<group>"; };
 		3D002E4B201A35ED001FC940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D5654552024E6850095C20C /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		3D5654562024E6860095C20C /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		3D5654572024E6860095C20C /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		3D5654582024E6870095C20C /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		3D5654592024E6880095C20C /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		3D56545A2024E6890095C20C /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		3D5654612025F57E0095C20C /* BusDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = BusDB.db; sourceTree = "<group>"; };
+		3D565463202608F40095C20C /* bus_stop_services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bus_stop_services.json; sourceTree = "<group>"; };
 		3D9B1773201CDA7900F464FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D9B1775201CDA8900F464FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBusArrival.m; sourceTree = "<group>"; };
 		3D9C0FA3201B8EB8003CA991 /* ZJBusArrival.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBusArrival.h; sourceTree = "<group>"; };
 		3D9C0FA9201B9DBA003CA991 /* BusesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusesViewController.h; sourceTree = "<group>"; };
 		3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusesViewController.m; sourceTree = "<group>"; };
+		3DCF4EC32022BC1000520A29 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		3DD6997A202A29E8008DE259 /* busStopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = busStopCell.xib; sourceTree = "<group>"; };
+		3DD6997C202A2FFE008DE259 /* busStopCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = busStopCellView.h; sourceTree = "<group>"; };
+		3DD6997D202A2FFE008DE259 /* busStopCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = busStopCellView.m; sourceTree = "<group>"; };
+		428C902A71B926E2DA27312F /* libPods-nxtbus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nxtbus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		474CD8AF489FC28DEF6FD71A /* Pods-nxtbusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbusUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8AAF49E9B71CD4553F2B88F7 /* Pods-nxtbus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus.debug.xcconfig"; sourceTree = "<group>"; };
+		BECD25DE97553611DC453B69 /* Pods-nxtbusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbusUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCF4EC42022BC1000520A29 /* libsqlite3.dylib in Frameworks */,
 				3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */,
 				3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */,
+				4F335B943F0082DCC7E8DE9C /* libPods-nxtbus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDEF0E044F13BDFC83FDB68 /* libPods-nxtbusUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +110,7 @@
 				3D002E48201A35ED001FC940 /* nxtbusUITests */,
 				3D002E2E201A35ED001FC940 /* Products */,
 				3D9B1772201CDA7900F464FF /* Frameworks */,
+				DB3A4E07E7DD2A4A9CFA500D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,7 +126,8 @@
 		3D002E2F201A35ED001FC940 /* nxtbus */ = {
 			isa = PBXGroup;
 			children = (
-				3D5171E72021C5C400F267F5 /* JSON */,
+				3D5654542024E64D0095C20C /* Fonts */,
+				3D56544F20245B5C0095C20C /* Data */,
 				3D9C0FA3201B8EB8003CA991 /* ZJBusArrival.h */,
 				3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */,
 				3D002E30201A35ED001FC940 /* AppDelegate.h */,
@@ -118,15 +154,41 @@
 		3D5171E72021C5C400F267F5 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				3D565463202608F40095C20C /* bus_stop_services.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		3D56544F20245B5C0095C20C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3D5654612025F57E0095C20C /* BusDB.db */,
+				3D5171E72021C5C400F267F5 /* JSON */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3D5654542024E64D0095C20C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3D5654572024E6860095C20C /* RobotoCondensed-Bold.ttf */,
+				3D56545A2024E6890095C20C /* RobotoCondensed-BoldItalic.ttf */,
+				3D5654552024E6850095C20C /* RobotoCondensed-Italic.ttf */,
+				3D5654582024E6870095C20C /* RobotoCondensed-Light.ttf */,
+				3D5654592024E6880095C20C /* RobotoCondensed-LightItalic.ttf */,
+				3D5654562024E6860095C20C /* RobotoCondensed-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3D9B1772201CDA7900F464FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DCF4EC32022BC1000520A29 /* libsqlite3.dylib */,
 				3D9B1775201CDA8900F464FF /* MapKit.framework */,
 				3D9B1773201CDA7900F464FF /* CoreLocation.framework */,
+				428C902A71B926E2DA27312F /* libPods-nxtbus.a */,
+				23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,10 +196,24 @@
 		3D9C0FA5201B8EBE003CA991 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3DD6997A202A29E8008DE259 /* busStopCell.xib */,
+				3DD6997C202A2FFE008DE259 /* busStopCellView.h */,
+				3DD6997D202A2FFE008DE259 /* busStopCellView.m */,
 				3D9C0FA9201B9DBA003CA991 /* BusesViewController.h */,
 				3D9C0FAA201B9DBA003CA991 /* BusesViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DB3A4E07E7DD2A4A9CFA500D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8AAF49E9B71CD4553F2B88F7 /* Pods-nxtbus.debug.xcconfig */,
+				22D349D9F0458271821C9738 /* Pods-nxtbus.release.xcconfig */,
+				BECD25DE97553611DC453B69 /* Pods-nxtbusUITests.debug.xcconfig */,
+				474CD8AF489FC28DEF6FD71A /* Pods-nxtbusUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D002E4E201A35ED001FC940 /* Build configuration list for PBXNativeTarget "nxtbus" */;
 			buildPhases = (
+				8477FA1E673000D4F9743A87 /* [CP] Check Pods Manifest.lock */,
 				3D002E29201A35EC001FC940 /* Sources */,
 				3D002E2A201A35EC001FC940 /* Frameworks */,
 				3D002E2B201A35EC001FC940 /* Resources */,
+				06CE1190DF7E036B961DA703 /* [CP] Embed Pods Frameworks */,
+				E1F076B84B6E629055223CDE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D002E51201A35ED001FC940 /* Build configuration list for PBXNativeTarget "nxtbusUITests" */;
 			buildPhases = (
+				D7021334F6E7AF4FCF2C85FB /* [CP] Check Pods Manifest.lock */,
 				3D002E41201A35ED001FC940 /* Sources */,
 				3D002E42201A35ED001FC940 /* Frameworks */,
 				3D002E43201A35ED001FC940 /* Resources */,
+				160C300C5E2352FA150B9A58 /* [CP] Embed Pods Frameworks */,
+				5CD550F43AB0FFD1C9938F55 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,8 +304,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D56545D2024E68A0095C20C /* RobotoCondensed-Bold.ttf in Resources */,
 				3D002E3D201A35ED001FC940 /* LaunchScreen.storyboard in Resources */,
+				3D5654602024E68A0095C20C /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				3D56545B2024E68A0095C20C /* RobotoCondensed-Italic.ttf in Resources */,
+				3DD6997B202A29E9008DE259 /* busStopCell.xib in Resources */,
+				3D565464202608F40095C20C /* bus_stop_services.json in Resources */,
+				3D5654622025F57E0095C20C /* BusDB.db in Resources */,
 				3D002E3A201A35ED001FC940 /* Assets.xcassets in Resources */,
+				3D56545E2024E68A0095C20C /* RobotoCondensed-Light.ttf in Resources */,
+				3D56545C2024E68A0095C20C /* RobotoCondensed-Regular.ttf in Resources */,
+				3D56545F2024E68A0095C20C /* RobotoCondensed-LightItalic.ttf in Resources */,
 				3D002E38201A35ED001FC940 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,11 +328,111 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06CE1190DF7E036B961DA703 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		160C300C5E2352FA150B9A58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CD550F43AB0FFD1C9938F55 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8477FA1E673000D4F9743A87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nxtbus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7021334F6E7AF4FCF2C85FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nxtbusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1F076B84B6E629055223CDE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3D002E29201A35EC001FC940 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD6997E202A2FFE008DE259 /* busStopCellView.m in Sources */,
 				3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */,
 				3D9C0FAB201B9DBA003CA991 /* BusesViewController.m in Sources */,
 				3D002E40201A35ED001FC940 /* main.m in Sources */,
@@ -393,6 +584,7 @@
 		};
 		3D002E4F201A35ED001FC940 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AAF49E9B71CD4553F2B88F7 /* Pods-nxtbus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -406,6 +598,7 @@
 		};
 		3D002E50201A35ED001FC940 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22D349D9F0458271821C9738 /* Pods-nxtbus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -419,6 +612,7 @@
 		};
 		3D002E52201A35ED001FC940 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BECD25DE97553611DC453B69 /* Pods-nxtbusUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nxtbusUITests/Info.plist;
@@ -432,6 +626,7 @@
 		};
 		3D002E53201A35ED001FC940 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474CD8AF489FC28DEF6FD71A /* Pods-nxtbusUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nxtbusUITests/Info.plist;

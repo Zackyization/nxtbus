@@ -8,22 +8,33 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+#import "FMDatabase.h"
 
 @interface ZJBusArrival : NSObject
 
 @property NSString *busNumber;
-@property NSString *busStopID;
 @property CLLocation *busLocation;
 
-@property NSMutableDictionary *busStopServices;
-@property NSArray *busStopServiceNumbers;
+@property NSString *busStopID;
+@property CLLocation *busStopLocation;
+@property NSString *busStopName;
+@property int busStopDistanceFromUser;
+//@property NSMutableDictionary *busStopServices; //RECONSIDER
+//@property NSArray *busStopServiceNumbers; //RECONSIDER
 
 @property NSString *busType; //SD for single deck, DD for double deck
-@property BOOL busHandicap;
-@property float timeRemaining; //RECONSIDER
+//@property BOOL busHandicap; //RECONSIDER
+//@property float timeRemaining; //RECONSIDER
 @property int busDensity;
 
+//methods returning arrays should only have ZJBusArrival objects in them
+-(NSMutableArray *)getNearbyBusStops:(CLLocation *)userLocation;
+-(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID;
+-(int)getDistanceFromUserToBusStop:(NSString *)busStopID userLocation:(CLLocation *)location;
 
+
+-(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)userLocation;
 -(NSMutableDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID;
 -(BOOL)isBusHandicap;
 
