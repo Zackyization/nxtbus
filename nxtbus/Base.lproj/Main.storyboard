@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Tweets-->
+        <!--Scan-->
         <scene sceneID="MjY-Ur-hoz">
             <objects>
                 <viewController id="8sq-zC-Wou" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qs2-aN-PKb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tweets" image="twitterTab" selectedImage="twitterTab" id="5ip-W6-tM6"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="scanTab" selectedImage="scanTab" id="5ip-W6-tM6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFf-pl-3VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,6 +298,6 @@
     <resources>
         <image name="currentLocation" width="45" height="45"/>
         <image name="nearbyTab" width="25" height="25"/>
-        <image name="twitterTab" width="25" height="25"/>
+        <image name="scanTab" width="25" height="25"/>
     </resources>
 </document>
