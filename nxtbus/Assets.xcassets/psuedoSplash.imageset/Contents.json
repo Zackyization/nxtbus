@@ -1,20 +1,8 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
       "idiom" : "iphone",
-      "filename" : "splashScreen.jpg",
+      "filename" : "splashScreen.png",
       "scale" : "1x"
     },
     {

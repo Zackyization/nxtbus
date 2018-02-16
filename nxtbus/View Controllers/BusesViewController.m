@@ -8,13 +8,13 @@
 
 #import "BusesViewController.h"
 #import "ZJBusArrival.h"
-
 #import "busStopCellView.h"
 
 @interface BusesViewController ()
 
 @property ZJBusArrival *busArrive;
 @property (weak, nonatomic) IBOutlet UILabel *nearbyBusStopsLabel;
+@property NSMutableArray *sortedStopsByDistance;
 
 @end
 
@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNeedsStatusBarAppearanceUpdate]; //TODO: fix status bar colour issue
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -33,14 +32,12 @@
     
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
-
-//    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
     _busArrive = [[ZJBusArrival alloc] init];
 
     [_busArrive addBusStopAnnotationsToMap:self.mapView fromUserLocation:self.locationManager.location];
     _nearbyBusStops = [[NSMutableArray alloc] init];
+    _nearbyBusStops = [_busArrive getNearbyBusStops:self.locationManager.location];
     
 }
 
@@ -48,7 +45,7 @@
     [self centerUserLocation:nil];
     _nearbyBusStops = [_busArrive getNearbyBusStops:self.locationManager.location];
     self.nearbyBusStopsLabel.text = [NSString stringWithFormat:@"%lu nearby", (unsigned long)[_nearbyBusStops count]];
-
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,10 +55,6 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     [self.locationManager stopUpdatingLocation];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle { //TODO: fix later on
-    return UIStatusBarStyleDefault;
 }
 
 -(void)refreshTable {
@@ -112,12 +105,11 @@
 */
 
 
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *busStopCellIdentifer = @"BusStopCell";
     busStopCellView *cell = (busStopCellView *)[tableView dequeueReusableCellWithIdentifier:busStopCellIdentifer];
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"BusStopCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"busStopCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
@@ -125,19 +117,25 @@
     cell.stopNameLabel.text = _busArrive.busStopName;
     cell.stopIDLabel.text = _busArrive.busStopID;
     
-    NSString *busServices;
+    NSMutableString *busServices = [[NSMutableString alloc] init];
     NSArray *b = [[NSArray alloc] init];
     
-    //make bus services appear
+    //get bus services
     b = [_busArrive getBusStopServiceNumbersFromBusStopID:_busArrive.busStopID];
     for (int i = 0; i < [b count]; i++) {
         if (i == ([b count] - 1)) {
-            busServices = [busServices stringByAppendingString:[NSString stringWithFormat:@"%@", [b objectAtIndex:i]]];
+            [busServices appendString:[NSString stringWithFormat:@"%@", [b objectAtIndex:i]]];
         } else {
-            busServices = [busServices stringByAppendingString:[NSString stringWithFormat:@"%@, ", [b objectAtIndex:i]]];
+            [busServices appendString:[NSString stringWithFormat:@"%@, ", [b objectAtIndex:i]]];
         }
     }
+
+    cell.stopServicesLabel.text = busServices;
     
+    //get distance
+    NSString *distance = [NSString stringWithFormat:@"%im", [_busArrive getDistanceFromUserToBusStop:_busArrive.busStopID userLocation:self.locationManager.location]];
+    cell.distanceAwayLabel.text = distance;
+
     return cell;
 }
 
@@ -145,48 +143,7 @@
     return [_nearbyBusStops count];
 }
 
-//- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-//    <#code#>
-//}
-//
-//- (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection {
-//    <#code#>
-//}
-//
-//- (void)preferredContentSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container {
-//    <#code#>
-//}
-//
-//- (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
-//    <#code#>q2
-//}
-//
-//- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(nonnull id<UIContentContainer>)container {
-//    <#code#>
-//}
-//
-//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
-//    <#code#>
-//}
-//
-//- (void)willTransitionToTraitCollection:(nonnull UITraitCollection *)newCollection withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator {
-//    <#code#>
-//}
-//
-//- (void)didUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context withAnimationCoordinator:(nonnull UIFocusAnimationCoordinator *)coordinator {
-//    <#code#>
-//}
-//
-//- (void)setNeedsFocusUpdate {
-//    <#code#>
-//}
-//
-//- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context {
-//    <#code#>
-//}
-//
-//- (void)updateFocusIfNeeded {
-//    <#code#>
-//}
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"busStopSegue" sender:self];
+}
 @end

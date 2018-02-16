@@ -19,13 +19,7 @@
     // Override point for customization after application launch.
     
     [self createCopyOfDatabaseIfNeeded];
-    
-//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
-//                                      forBarPosition:UIBarPositionAny
-//                                          barMetrics:UIBarMetricsDefault];
-//
-//    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    
+
     return YES;
 }
 

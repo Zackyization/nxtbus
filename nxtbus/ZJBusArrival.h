@@ -11,36 +11,63 @@
 #import <MapKit/MapKit.h>
 #import "FMDatabase.h"
 
+//TODO: Make additional methods in ZJBusArrive to get the necessary info for the bus cell
+
 @interface ZJBusArrival : NSObject
 
-@property NSString *busNumber;
-@property CLLocation *busLocation;
+@property (nonatomic) NSString *busNumber;
+@property (nonatomic) CLLocation *busLocation;
 
-@property NSString *busStopID;
+@property (nonatomic) NSString *busStopID;
 @property CLLocation *busStopLocation;
-@property NSString *busStopName;
-@property int busStopDistanceFromUser;
-//@property NSMutableDictionary *busStopServices; //RECONSIDER
-//@property NSArray *busStopServiceNumbers; //RECONSIDER
+@property (nonatomic) NSString *busStopName;
+@property (nonatomic) int busStopDistanceFromUser;
 
 @property NSString *busType; //SD for single deck, DD for double deck
-//@property BOOL busHandicap; //RECONSIDER
-//@property float timeRemaining; //RECONSIDER
-@property int busDensity;
+@property (nonatomic) BOOL busHandicap; //RECONSIDER
+@property (nonatomic) float nextTimeRemaining;
+@property (nonatomic) NSString *load; //SEA - non crowded, SDA - moderate, LSD - crowded
 
 //methods returning arrays should only have ZJBusArrival objects in them
 -(NSMutableArray *)getNearbyBusStops:(CLLocation *)userLocation;
 -(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID;
 -(int)getDistanceFromUserToBusStop:(NSString *)busStopID userLocation:(CLLocation *)location;
 
-
 -(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)userLocation;
--(NSMutableDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID;
+-(NSDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID;
 -(BOOL)isBusHandicap;
 
--(int)getNextTimeRemainingFor:(NSString *)busNumber atBusStop:(NSString *)busStopID;
-
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID;
--(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID;
+-(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+/* Methods that may require online connection */
+//useAPI should be set to YES to get a direct feedback from the arrivelah API
+
+//core method
+-(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)param;
+
+/* Bus info methods */
+//time remaining
+//TODO: Restructure below method from float to NSMutableArray
+-(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+
+//location of bus
+-(CLLocation *)getBusLocation:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+
+//bus load
+-(NSString *)getBusLoadFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+
+//wheelchair accessibility
+-(BOOL)getBusAccessibilityFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+
+//busType
+-(NSString *)getBusType:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+
+//routeName
+-(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID;
+
+/* Subsequent bus info */
+
+
+/* next2 bus info */
 
 @end

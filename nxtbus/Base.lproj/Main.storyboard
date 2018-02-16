@@ -25,13 +25,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qs2-aN-PKb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tweets" id="5ip-W6-tM6"/>
+                    <tabBarItem key="tabBarItem" title="Tweets" image="twitterTab" selectedImage="twitterTab" id="5ip-W6-tM6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFf-pl-3VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="929" y="961"/>
         </scene>
-        <!--View Controller-->
+        <!--Favourites-->
         <scene sceneID="nWU-fZ-dru">
             <objects>
                 <viewController id="5Dl-yW-lFb" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KSH-Hm-BXr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zui-ko-lyd"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="zui-ko-lyd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHs-cf-SJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,27 +78,24 @@
         <!--Nearby Bus Stops-->
         <scene sceneID="Fkk-Ae-1wu">
             <objects>
-                <viewController id="5CM-vM-dGL" customClass="BusesViewController" sceneMemberID="viewController">
+                <viewController id="5CM-vM-dGL" customClass="NearbyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="98C-Ra-8Vd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aXX-Gg-YSr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aXX-Gg-YSr">
                                 <rect key="frame" x="0.0" y="321" width="375" height="297"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5CM-vM-dGL" id="Oje-kK-S2i"/>
+                                    <outlet property="delegate" destination="5CM-vM-dGL" id="Ad3-Eq-FuZ"/>
+                                </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15x-4Z-w9X">
                                 <rect key="frame" x="0.0" y="116" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOu-JI-pVs">
-                                <rect key="frame" x="111" y="295" width="152" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JX-HJ-5vV">
                                 <rect key="frame" x="329" y="251" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,11 +106,25 @@
                                     <action selector="centerUserLocation:" destination="5CM-vM-dGL" eventType="touchUpInside" id="1I7-qn-hB4"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPK-LA-PRg">
+                                <rect key="frame" x="16" y="305" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="0.20743257705479451" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOu-JI-pVs">
+                                <rect key="frame" x="128" y="295" width="119" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="g41-ox-fqR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Nearby Bus Stops" id="u2b-Ar-TEe">
+                    <navigationItem key="navigationItem" title="Nearby Bus Stops" largeTitleDisplayMode="always" id="u2b-Ar-TEe">
+                        <barButtonItem key="backBarButtonItem" title="Nearby Bus Stops" id="wkG-A7-vye"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="mjd-OF-0s7">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="90" maxX="0.0" maxY="90"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,6 +137,7 @@
                         <outlet property="mapView" destination="15x-4Z-w9X" id="WDG-mS-P5b"/>
                         <outlet property="nearbyBusStopsLabel" destination="DOu-JI-pVs" id="rAy-w2-dEC"/>
                         <outlet property="tableView" destination="aXX-Gg-YSr" id="cPv-Pz-fdn"/>
+                        <segue destination="PfX-vg-fdN" kind="show" identifier="busStopSegue" id="u1e-aV-KpI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPZ-Z7-1wX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,6 +152,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="dwQ-p6-qIO" kind="relationship" relationship="viewControllers" id="ZNU-9e-J7Q"/>
@@ -152,16 +166,17 @@
             </objects>
             <point key="canvasLocation" x="-572" y="-97"/>
         </scene>
-        <!--Buses-->
+        <!--Nearby-->
         <scene sceneID="lzt-K8-EXv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dwQ-p6-qIO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buses" id="OmM-qZ-66C"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyTab" selectedImage="nearbyTab" id="OmM-qZ-66C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="vDR-IW-O5s">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,7 +204,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Cx1-43-PBm">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -218,6 +233,14 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="RobotoCondensed-Italic" family="Roboto Condensed" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="30"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -228,8 +251,53 @@
             </objects>
             <point key="canvasLocation" x="928" y="111.54422788605699"/>
         </scene>
+        <!--Bus Stop Name-->
+        <scene sceneID="oni-0A-3XP">
+            <objects>
+                <viewController title="Bus Stop Name" id="PfX-vg-fdN" customClass="BusStopViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dgC-bB-5sf" customClass="busStopCellView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-ol-Cgs">
+                                <rect key="frame" x="16" y="132" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="0.20743257709999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="234567" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-BZ-Vgw">
+                                <rect key="frame" x="128" y="122" width="119" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUF-vD-usr">
+                                <rect key="frame" x="0.0" y="145" width="375" height="473"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="PfX-vg-fdN" id="PA1-0J-YJw"/>
+                                    <outlet property="delegate" destination="PfX-vg-fdN" id="ckn-1z-mLv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6an-N2-oje"/>
+                    </view>
+                    <connections>
+                        <outlet property="busStopIDLabel" destination="UFi-BZ-Vgw" id="SWB-sI-AOG"/>
+                        <outlet property="tableView" destination="WUF-vD-usr" id="jxG-B4-LzD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCM-no-YTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2781.5999999999999" y="-1327.2863568215894"/>
+        </scene>
     </scenes>
     <resources>
         <image name="currentLocation" width="45" height="45"/>
+        <image name="nearbyTab" width="25" height="25"/>
+        <image name="twitterTab" width="25" height="25"/>
     </resources>
 </document>

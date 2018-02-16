@@ -1,0 +1,169 @@
+//
+//  BusStopViewController.m
+//  nxtbus
+//
+//  Created by Zildjian Garcia on 10/2/18.
+//  Copyright © 2018 Zildjian Garcia. All rights reserved.
+//
+
+#import "BusStopViewController.h"
+#import "ZJBusArrival.h"
+
+#import "busStopServiceCellView.h"
+
+@interface BusStopViewController ()
+
+@property (nonatomic) ZJBusArrival *busArrival;
+@property (nonatomic) NSArray *busServices;
+@property NSDictionary *busData;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+@implementation BusStopViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.busArrival = [[ZJBusArrival alloc] init];
+    self.busServices = [[NSArray alloc] init];
+//    self.busServices = [NSMutableArray arrayWithArray:[self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID]]; //Left off here, convert this to the GetLiveBusServices method
+    self.busStopIDLabel.text = self.busStopID;
+    
+    self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
+    self.busServices = [self.busArrival getLiveBusStopServiceNumbersFromBusStopID:self.busStopID fromData:self.busData useAPI:NO];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *busCellIdentifer = @"BusStopServiceCell";
+    busStopServiceCellView *cell = (busStopServiceCellView *)[tableView dequeueReusableCellWithIdentifier:busCellIdentifer];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"busStopServiceCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.busServiceLabel.text = [self.busServices objectAtIndex:indexPath.row];
+    cell.busArrive = [[ZJBusArrival alloc] init];
+    cell.busArrive.busNumber = cell.busServiceLabel.text;
+    cell.busArrive.busStopID = self.busStopID;
+    
+    //Bus arrival methods have to use this class' NSDictionary busData to reduce lag
+    //Get timing for next
+    NSString *nextTimeRemaining;
+    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+
+    if (floorf(timeRemaining) <= -2) {
+        nextTimeRemaining = @"-";
+        cell.nextTimeRemainingLabel.textColor = [UIColor lightGrayColor];
+        cell.nextTimeRemainingLabel.font = [UIFont systemFontOfSize:30];
+        cell.nextMinsLabel.hidden = YES;
+    } else if (floorf(timeRemaining) == 1) {
+        cell.nextMinsLabel.text = @"min";
+        nextTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    } else if (floorf(timeRemaining) <= 0) {
+        nextTimeRemaining = @"Arr";
+        cell.nextMinsLabel.hidden = YES;
+    } else {
+        nextTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    }
+
+    cell.nextTimeRemainingLabel.text = nextTimeRemaining;
+    
+    //    //Get timing for subsequent
+    //    NSString *subsequentTimeRemaining;
+    //    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"subsequent" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    //
+    //    if (floorf(timeRemaining) <= -2) {
+    //        cell.subsequentMinsLabel.hidden = YES;
+    //        cell.subsequentTimeRemainingLabel.hidden = YES;
+    //    } else if (floorf(timeRemaining) == 1) {
+    //        cell.subsequentMinsLabel.text = @"min";
+    //        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    //    } else if (floorf(timeRemaining) <= 0) {
+    //        subsequentTimeRemaining = @"Arr";
+    //        cell.subsequentMinsLabel.hidden = YES;
+    //    } else {
+    //        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    //    }
+    //
+    //    cell.subsequentTimeRemainingLabel.text = subsequentTimeRemaining;
+
+    //Get timing for next3
+//    NSString *next3TimeRemaining;
+//    timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"next3" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+//
+//    if (floorf(timeRemaining) <= -2) {
+//        cell.next3MinsLabel.hidden = YES;
+//        cell.next3TimeRemainingLabel.hidden = YES;
+//    } else if (floorf(timeRemaining) == 1) {
+//        cell.next3MinsLabel.text = @"min";
+//        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+//    } else if (floorf(timeRemaining) <= 0) {
+//        next3TimeRemaining = @"Arr";
+//        cell.next3MinsLabel.hidden = YES;
+//    } else {
+//        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+//    }
+//
+//    cell.next3TimeRemainingLabel.text = next3TimeRemaining;
+//
+    //Get bus load
+    NSString *busLoad = [self.busArrival getBusLoadFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    if (busLoad) {
+        cell.busLoadIndicatorImage.hidden = NO;
+        
+        if ([busLoad isEqualToString:@"SEA"]) {
+            cell.busLoadIndicatorImage.image = [UIImage imageNamed:@"seatsAvailable"];
+        } else if ([busLoad isEqualToString:@"SDA"]) {
+            cell.busLoadIndicatorImage.image = [UIImage imageNamed:@"standingAvailable"];
+        } else if ([busLoad isEqualToString:@"LSD"]) {
+            cell.busLoadIndicatorImage.image = [UIImage imageNamed:@"limitedStanding"];
+        }
+    }
+    
+    //Get bus accessibility
+    BOOL wheelchairAccessible = [self.busArrival getBusAccessibilityFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    if (wheelchairAccessible == YES) {
+        cell.busAccessibilityIndicatorImage.hidden = NO;
+    }
+    
+    
+    //Get bus type
+    NSString *busType = [self.busArrival getBusType:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    if (busType) {
+        cell.busTypeIndicatorImage.hidden = NO;
+        
+        if ([busType isEqualToString:@"SD"]) {
+            cell.busTypeIndicatorImage.image = [UIImage imageNamed:@"singleDeckBus"];
+        } else if ([busType isEqualToString:@"DD"]) {
+            cell.busTypeIndicatorImage.image = [UIImage imageNamed:@"doubleDeckerBus"];
+        }
+    }
+    
+    //Get route name
+    //TODO: Make a method in ZJBusArrival that gets the route for the bus stop service
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.busServices count];
+}
+
+@end
