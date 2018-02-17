@@ -87,6 +87,7 @@
 }
 
 - (IBAction)refreshButton:(id)sender {
+    [self.tableView.refreshControl beginRefreshing];
     //Refresh nearby bus stops
     [self removeAllPinsButUserLocation];
     [_busArrive addBusStopAnnotationsToMap:self.mapView fromUserLocation:self.mapView.userLocation.location];
@@ -94,12 +95,12 @@
     self.nearbyBusStopsLabel.text = [NSString stringWithFormat:@"%lu nearby", (unsigned long)[_nearbyBusStops count]];
     [self centerUserLocation:nil];
     
-//    [self.tableView reloadData];
     
     [self.tableView reloadData];
-    [self.tableView.refreshControl endRefreshing];
+    [[NSOperationQueue currentQueue] addOperationWithBlock:^{
+        [self.tableView.refreshControl endRefreshing];
+    }];
 }
-
 
 
 

@@ -167,9 +167,8 @@
 }
 
 
--(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
+-(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal {
     
-    /*TODO: UNCOMMENT LINE BELOW WHEN DONE WTIH TESTING */
     NSDictionary *busServicesDictionary;
     if (option == YES) {
         busServicesDictionary = [self getBusStopServicesFromBusStopID:busStopID];
@@ -177,23 +176,22 @@
         busServicesDictionary = dictionaryParam;
     }
     
-    
-    /* PLACEHOLDER CODE START */
-    //    NSError *error;
-    //    NSString *path = [[NSBundle mainBundle] pathForResource:@"arriveLahJSON" ofType:@"json"];
-    //    NSData *data = [NSData dataWithContentsOfFile:path];
-    //
-    //    NSDictionary *busServicesDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-    /* PLACEHOLDER CODE END */
-    
-    
-    //loop through the array of dictionaries
-    //access each dictionary check if the bus number returned is the desired number from the parameter in the method declaration above.
+    //access each dictionary check if the bus number returned is the desired number from the parameter in the method declaration above
+    //directionVal helps to differentiate
     NSDictionary *desiredDictionary;
-    for (int i = 0; i < [[busServicesDictionary objectForKey:@"services"] count]; i++) {
-        if ([[[[busServicesDictionary objectForKey:@"services"] objectAtIndex:i] objectForKey:@"no"] isEqualToString:busNumber]) {
-            desiredDictionary = [[busServicesDictionary objectForKey:@"services"] objectAtIndex:i];
-            break;
+    if (directionVal == 2) {
+        for (int i = 0; i < [[busServicesDictionary objectForKey:@"services"] count]; i++) {
+            if ([[[[busServicesDictionary objectForKey:@"services"] objectAtIndex:i] objectForKey:@"no"] isEqualToString:busNumber]) {
+                desiredDictionary = [[busServicesDictionary objectForKey:@"services"] objectAtIndex:i];
+                break;
+            }
+        }
+    } else {
+        for (int i = (int)[[busServicesDictionary objectForKey:@"services"] count] - 1; i > -1; i--) {
+            if ([[[[busServicesDictionary objectForKey:@"services"] objectAtIndex:i] objectForKey:@"no"] isEqualToString:busNumber]) {
+                desiredDictionary = [[busServicesDictionary objectForKey:@"services"] objectAtIndex:i];
+                break;
+            }
         }
     }
     
@@ -206,61 +204,19 @@
 
 /* Next bus info */
 //time remaining
--(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
-    //TODO: Find a way to return the correct timing for duplicate buses in a bus stop
-    //Find out direction of bus
-    //Use array index to differentiate the bus timings (first instance is direction 2, second instance is direction 1)
-    NSArray *busNumbers = [dictionaryParam objectForKey:@"no"];
-    if (!busNumbers || [busNumbers count] == 0) {
-        return -5;
-    }
-    
-    NSArray *liveBusNumbers = [self getLiveBusStopServiceNumbersFromBusStopID:busNumber fromData:dictionaryParam useAPI:option];
-    if (!liveBusNumbers || [liveBusNumbers count] == 0) {
-        return -5;
-    }
-    
-    //compare the two by their position in the array
-    int firstInstance = -1;
-    int secondInstance = -1;
-    if ([busNumbers containsObject:busNumber] && [liveBusNumbers containsObject:busNumber]) {
-        for (int i = 0; i < [liveBusNumbers count]; i++) {
-            if ([[liveBusNumbers objectAtIndex:i] isEqualToString:busNumber]) {
-                firstInstance = i;
-                break;
-            }
-        }
-        
-        for (int i = (int)[liveBusNumbers count]; i > 0; i--) {
-            if ([[liveBusNumbers objectAtIndex:i] isEqualToString:busNumber]) {
-                secondInstance = i;
-                break;
-            }
-        }
-        
-        
-    }
-    
-    
-    NSDictionary *busService;
-    if (firstInstance != -1 && secondInstance != -1) {
-        //duplicate bus number found
-        busService = [[dictionaryParam objectForKey:@"services"] objectAtIndex:firstInstance];
-    } else {
-        //normal scenario
-        busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option];
-    }
-    
+-(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)value {
+    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option direction:value];
     if (!busService || busService.count == 0) {
         return -5;
     }
     
-    NSNumber *value = [busService valueForKeyPath:[NSString stringWithFormat:@"%@.duration_ms", position]];
+    
+    NSNumber *val = [busService valueForKeyPath:[NSString stringWithFormat:@"%@.duration_ms", position]];
     if (value < 0) {
         return -5;
     }
     
-    float timeRemaining = [value floatValue];
+    float timeRemaining = [val floatValue];
     timeRemaining /= 60000;
     
     return timeRemaining;
@@ -268,8 +224,8 @@
 
 
 //location of bus
--(CLLocation *)getBusLocation:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
-    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option];
+-(CLLocation *)getBusLocation:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal {
+    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option direction:directionVal];
     if (!busService || busService.count == 0) {
         return nil;
     }
@@ -286,8 +242,8 @@
 }
 
 //bus load
--(NSString *)getBusLoadFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
-    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option];
+-(NSString *)getBusLoadFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal {
+    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option direction:directionVal];
     if (!busService || busService.count == 0) {
         return nil;
         
@@ -303,8 +259,8 @@
 }
 
 //wheelchair accessibility
--(BOOL)getBusAccessibilityFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
-    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option];
+-(BOOL)getBusAccessibilityFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal {
+    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option direction:directionVal];
     if (!busService || busService.count == 0) {
         return NO;
     }
@@ -318,8 +274,8 @@
     return NO;
 }
 
--(NSString *)getBusType:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option {
-    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option];
+-(NSString *)getBusType:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal {
+    NSDictionary *busService = [self getBusNumberDictionary:busNumber fromBusStopID:busStopID fromData:dictionaryParam useAPI:option direction:directionVal];
     if (!busService || busService.count == 0) {
         return nil;
     }
@@ -332,28 +288,41 @@
     return busType;
 }
 
--(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID {
+-(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)value direction:(int)directionVal {
+    //TODO
     NSError *error;
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", busNumber] ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     
     NSDictionary *busRouteDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     
-    //TODO: Make a way for the app to know which direction the bus is going
-    NSArray *arrayOfStops = [busRouteDictionary valueForKeyPath:@"1.stops"];
     
-    return nil;
+    NSArray *arrayOfStops;
+    arrayOfStops = [busRouteDictionary valueForKeyPath:[NSString stringWithFormat:@"%i.stops", directionVal]];
+    NSString *lastBusStop = [arrayOfStops lastObject];
+    
+    //Query for last bus stop name
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    NSString *busStopName;
+    [database open];
+    NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no IN (?)";
+    NSArray *values = [[NSArray alloc] initWithObjects:lastBusStop, nil];
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    if ([results next]) {
+        busStopName = [NSString stringWithFormat:@"%@", [results stringForColumn:@"name"]];
+    }
+    
+    [database close];
+    
+    return busStopName;
 }
-
-
-/* Reconsider the method below */
-//-(NSString *)getBusNumber:(NSString *)bus fromArray:(NSArray *)array {
-//    for (int i = 0; i < [array count]; i++) {
-//        if ([bus isEqualToString:[array objectAtIndex:i]]) {
-//            return [array objectAtIndex:i];
-//        }
-//    }
-//    return NULL;
-//}
 
 @end

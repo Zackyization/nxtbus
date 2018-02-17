@@ -11,12 +11,11 @@
 #import <MapKit/MapKit.h>
 #import "FMDatabase.h"
 
-//TODO: Make additional methods in ZJBusArrive to get the necessary info for the bus cell
-
 @interface ZJBusArrival : NSObject
 
 @property (nonatomic) NSString *busNumber;
 @property (nonatomic) CLLocation *busLocation;
+@property (nonatomic) int direction;
 
 @property (nonatomic) NSString *busStopID;
 @property CLLocation *busStopLocation;
@@ -39,31 +38,30 @@
 
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID;
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
-/* Methods that may require online connection */
+
 //useAPI should be set to YES to get a direct feedback from the arrivelah API
 
 //core method
--(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)param;
+-(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam  useAPI:(BOOL)param direction:(int)directionVal;
 
 /* Bus info methods */
 //time remaining
-//TODO: Restructure below method from float to NSMutableArray
--(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+-(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
 //location of bus
--(CLLocation *)getBusLocation:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+-(CLLocation *)getBusLocation:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
 //bus load
--(NSString *)getBusLoadFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+-(NSString *)getBusLoadFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
 //wheelchair accessibility
--(BOOL)getBusAccessibilityFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+-(BOOL)getBusAccessibilityFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
 //busType
--(NSString *)getBusType:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
+-(NSString *)getBusType:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
 //routeName
--(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID;
+-(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)directionVal;
 
 /* Subsequent bus info */
 

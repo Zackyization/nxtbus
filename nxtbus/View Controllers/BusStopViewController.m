@@ -28,7 +28,6 @@
     // Do any additional setup after loading the view.
     self.busArrival = [[ZJBusArrival alloc] init];
     self.busServices = [[NSArray alloc] init];
-//    self.busServices = [NSMutableArray arrayWithArray:[self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID]]; //Left off here, convert this to the GetLiveBusServices method
     self.busStopIDLabel.text = self.busStopID;
     
     self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
@@ -51,7 +50,12 @@
  }
  */
 
+- (IBAction)refreshButton:(id)sender {
+    [self.tableView reloadData];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *busCellIdentifer = @"BusStopServiceCell";
     busStopServiceCellView *cell = (busStopServiceCellView *)[tableView dequeueReusableCellWithIdentifier:busCellIdentifer];
     if (cell == nil) {
@@ -64,10 +68,34 @@
     cell.busArrive.busNumber = cell.busServiceLabel.text;
     cell.busArrive.busStopID = self.busStopID;
     
+    for (int i = (int)indexPath.row; i < [self.busServices count]; i++) {
+        //loops up the array to look for duplicate
+        //if no duplicate is found the direction value is 1 for the current cell
+        //route is determined this way
+        if ([cell.busServiceLabel.text isEqualToString:(NSString *)[self.busServices objectAtIndex:i]]) {
+            for (int j = (int)[self.busServices count] - 1; j > -1; j--) {
+                if ([(NSString *)[self.busServices objectAtIndex:i]
+                     isEqualToString:(NSString *)[self.busServices objectAtIndex:j]]) {
+                    if (i == j) {
+                        cell.busArrive.direction = 1;
+                    } else {
+                        cell.busArrive.direction = 2;
+                    }
+                }
+            }
+        }
+        
+    }
+    
     //Bus arrival methods have to use this class' NSDictionary busData to reduce lag
     //Get timing for next
     NSString *nextTimeRemaining;
-    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
+                                                      busPosition:@"next"
+                                                    fromBusStopID:cell.busArrive.busStopID
+                                                         fromData:self.busData
+                                                           useAPI:NO
+                                                        direction:cell.busArrive.direction];
 
     if (floorf(timeRemaining) <= -2) {
         nextTimeRemaining = @"-";
@@ -87,6 +115,7 @@
     cell.nextTimeRemainingLabel.text = nextTimeRemaining;
     
     //    //Get timing for subsequent
+    //    //TODO: Fix exception in the subsequent timing code block
     //    NSString *subsequentTimeRemaining;
     //    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"subsequent" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
     //
@@ -125,7 +154,12 @@
 //    cell.next3TimeRemainingLabel.text = next3TimeRemaining;
 //
     //Get bus load
-    NSString *busLoad = [self.busArrival getBusLoadFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    NSString *busLoad = [self.busArrival getBusLoadFor:cell.busArrive.busNumber
+                                           busPosition:@"next"
+                                         fromBusStopID:cell.busArrive.busStopID
+                                              fromData:self.busData
+                                                useAPI:NO
+                                             direction:cell.busArrive.direction];
     if (busLoad) {
         cell.busLoadIndicatorImage.hidden = NO;
         
@@ -139,14 +173,23 @@
     }
     
     //Get bus accessibility
-    BOOL wheelchairAccessible = [self.busArrival getBusAccessibilityFor:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    BOOL wheelchairAccessible = [self.busArrival getBusAccessibilityFor:cell.busArrive.busNumber
+                                                            busPosition:@"next" fromBusStopID:cell.busArrive.busStopID
+                                                               fromData:self.busData
+                                                                 useAPI:NO
+                                                              direction:cell.busArrive.direction];
     if (wheelchairAccessible == YES) {
         cell.busAccessibilityIndicatorImage.hidden = NO;
     }
     
     
     //Get bus type
-    NSString *busType = [self.busArrival getBusType:cell.busArrive.busNumber busPosition:@"next" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
+    NSString *busType = [self.busArrival getBusType:cell.busArrive.busNumber
+                                        busPosition:@"next"
+                                      fromBusStopID:cell.busArrive.busStopID
+                                           fromData:self.busData
+                                             useAPI:NO
+                                          direction:cell.busArrive.direction];
     if (busType) {
         cell.busTypeIndicatorImage.hidden = NO;
         
@@ -159,6 +202,7 @@
     
     //Get route name
     //TODO: Make a method in ZJBusArrival that gets the route for the bus stop service
+    
     return cell;
 }
 
