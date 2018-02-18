@@ -39,7 +39,7 @@
     }
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.tintColor = [UIColor whiteColor];
+    refresh.tintColor = [UIColor grayColor];
     [refresh addTarget:self action:@selector(refreshButton:) forControlEvents:UIControlEventValueChanged];
     
     self.tableView.refreshControl = refresh;

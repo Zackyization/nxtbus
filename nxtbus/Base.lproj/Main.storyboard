@@ -113,13 +113,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JX-HJ-5vV">
-                                <rect key="frame" x="329" y="251" width="30" height="30"/>
+                                <rect key="frame" x="329" y="213" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="currentLocation">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="centerUserLocation:" destination="5CM-vM-dGL" eventType="touchUpInside" id="1I7-qn-hB4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEQ-U1-cQn">
+                                <rect key="frame" x="329" y="251" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="compassOff"/>
+                                <connections>
+                                    <action selector="compassToggle:" destination="5CM-vM-dGL" eventType="touchUpInside" id="ekC-jY-x5s"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPK-LA-PRg">
@@ -150,6 +158,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="compassButton" destination="IEQ-U1-cQn" id="Szh-aH-lfT"/>
                         <outlet property="mapView" destination="15x-4Z-w9X" id="WDG-mS-P5b"/>
                         <outlet property="nearbyBusStopsLabel" destination="DOu-JI-pVs" id="rAy-w2-dEC"/>
                         <outlet property="tableView" destination="aXX-Gg-YSr" id="cPv-Pz-fdn"/>
@@ -349,6 +358,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compassOff" width="45" height="45"/>
         <image name="currentLocation" width="45" height="45"/>
         <image name="nearbyTab" width="25" height="25"/>
         <image name="scanTab" width="25" height="25"/>
