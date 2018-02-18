@@ -29,7 +29,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFf-pl-3VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="960"/>
+            <point key="canvasLocation" x="1838" y="960"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="nWU-fZ-dru">
@@ -38,6 +38,22 @@
                     <view key="view" contentMode="scaleToFill" id="8eS-V3-9c0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-zN-gbs">
+                                <rect key="frame" x="0.0" y="171" width="375" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-aJ-5qN">
+                                <rect key="frame" x="16" y="127" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Bus Stops"/>
+                                    <segment title="Bus Services"/>
+                                </segments>
+                                <color key="tintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KSH-Hm-BXr"/>
                     </view>
@@ -45,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHs-cf-SJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="111"/>
+            <point key="canvasLocation" x="1838" y="111"/>
         </scene>
         <!--Search-->
         <scene sceneID="47T-s3-XgJ">
@@ -287,7 +303,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="5Zc-6q-3ed">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Fdg-BY-mWb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Fdg-BY-mWb">
+                            <connections>
+                                <action selector="refreshButton:" destination="PfX-vg-fdN" id="uyY-zm-LY8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
