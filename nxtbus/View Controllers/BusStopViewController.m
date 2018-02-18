@@ -32,6 +32,11 @@
     
     self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
     self.busServices = [self.busArrival getLiveBusStopServiceNumbersFromBusStopID:self.busStopID fromData:self.busData useAPI:NO];
+    
+    //when no data is received from api
+    if (!_busServices || _busServices.count == 0) {
+        self.busServices = [self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +78,7 @@
         //if no duplicate is found the direction value is 1 for the current cell
         //route is determined this way
         if ([cell.busServiceLabel.text isEqualToString:(NSString *)[self.busServices objectAtIndex:i]]) {
-            for (int j = (int)[self.busServices count] - 1; j > -1; j--) {
+            for (int j = (int)[self.busServices count] - 1; j > (int)indexPath.row - 1; j--) {
                 if ([(NSString *)[self.busServices objectAtIndex:i]
                      isEqualToString:(NSString *)[self.busServices objectAtIndex:j]]) {
                     if (i == j) {
@@ -201,7 +206,8 @@
     }
     
     //Get route name
-    //TODO: Make a method in ZJBusArrival that gets the route for the bus stop service
+    NSString *routeName = [self.busArrival getRoute:cell.busArrive.busNumber fromBusStopID:cell.busArrive.busStopID direction:cell.busArrive.direction];
+    cell.busRouteNameLabel.text = routeName;
     
     return cell;
 }

@@ -154,7 +154,6 @@
 
 
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID {
-    
     NSError *error;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"bus_stop_services" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -288,8 +287,7 @@
     return busType;
 }
 
--(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)value direction:(int)directionVal {
-    //TODO
+-(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID  direction:(int)directionVal {
     NSError *error;
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", busNumber] ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -313,9 +311,9 @@
     [database open];
     NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no IN (?)";
     NSArray *values = [[NSArray alloc] initWithObjects:lastBusStop, nil];
+    
     //Query Result
     FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
-    
     if ([results next]) {
         busStopName = [NSString stringWithFormat:@"%@", [results stringForColumn:@"name"]];
     }

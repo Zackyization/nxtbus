@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
--(void)refreshTable;
 
 - (IBAction)centerUserLocation:(id)sender;
 - (IBAction)refreshButton:(id)sender;

@@ -16,7 +16,6 @@
 
 @property ZJBusArrival *busArrive;
 @property (weak, nonatomic) IBOutlet UILabel *nearbyBusStopsLabel;
-@property NSMutableArray *sortedStopsByDistance;
 
 @property NSString *busStopTitleValue;
 @property NSString *busStopIDValue;
