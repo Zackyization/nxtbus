@@ -211,7 +211,7 @@
     
     
     NSNumber *val = [busService valueForKeyPath:[NSString stringWithFormat:@"%@.duration_ms", position]];
-    if (value < 0) {
+    if (val < 0 || [val isKindOfClass:[NSNull class]]) {
         return -5;
     }
     

@@ -457,6 +457,7 @@
 		3D4263F62035C40B007D4A4B /* 3N.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D42623B2035C40A007D4A4B /* 3N.json */; };
 		3D4263F72035C40B007D4A4B /* 35.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D42623C2035C40A007D4A4B /* 35.json */; };
 		3D4263F82035C40B007D4A4B /* 182.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D42623D2035C40A007D4A4B /* 182.json */; };
+		3D42640E20396B5F007D4A4B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42640D20396B5F007D4A4B /* SearchViewController.m */; };
 		3D556F45202F2E9E00BEB758 /* BusStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D556F44202F2E9E00BEB758 /* BusStopViewController.m */; };
 		3D556F48202F31B300BEB758 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D556F47202F31B300BEB758 /* NearbyViewController.m */; };
 		3D556F4A202F770B00BEB758 /* busStopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D556F49202F770B00BEB758 /* busStopCell.xib */; };
@@ -945,6 +946,8 @@
 		3D42623B2035C40A007D4A4B /* 3N.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3N.json; sourceTree = "<group>"; };
 		3D42623C2035C40A007D4A4B /* 35.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 35.json; sourceTree = "<group>"; };
 		3D42623D2035C40A007D4A4B /* 182.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 182.json; sourceTree = "<group>"; };
+		3D42640C20396B5F007D4A4B /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		3D42640D20396B5F007D4A4B /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		3D556F43202F2E9E00BEB758 /* BusStopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusStopViewController.h; sourceTree = "<group>"; };
 		3D556F44202F2E9E00BEB758 /* BusStopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusStopViewController.m; sourceTree = "<group>"; };
 		3D556F46202F31B300BEB758 /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
@@ -1554,6 +1557,8 @@
 		3D9C0FA5201B8EBE003CA991 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D42640C20396B5F007D4A4B /* SearchViewController.h */,
+				3D42640D20396B5F007D4A4B /* SearchViewController.m */,
 				3D556F4E202F777300BEB758 /* Table Cells */,
 				3D556F47202F31B300BEB758 /* NearbyViewController.m */,
 				3D556F46202F31B300BEB758 /* NearbyViewController.h */,
@@ -2240,6 +2245,7 @@
 				3D002E40201A35ED001FC940 /* main.m in Sources */,
 				3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */,
 				3D556F51202F782D00BEB758 /* busStopServiceCellView.m in Sources */,
+				3D42640E20396B5F007D4A4B /* SearchViewController.m in Sources */,
 				3D556F45202F2E9E00BEB758 /* BusStopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

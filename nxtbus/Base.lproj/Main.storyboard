@@ -50,7 +50,7 @@
         <!--Search-->
         <scene sceneID="47T-s3-XgJ">
             <objects>
-                <viewController id="GoP-lb-IlI" sceneMemberID="viewController">
+                <viewController id="GoP-lb-IlI" customClass="SearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yHm-pZ-hl0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-R1-tXD">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for a Bus Stop/Service" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-R1-tXD">
                                 <rect key="frame" x="0.0" y="116" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>

@@ -119,45 +119,55 @@
 
     cell.nextTimeRemainingLabel.text = nextTimeRemaining;
     
-    //    //Get timing for subsequent
-    //    //TODO: Fix exception in the subsequent timing code block
-    //    NSString *subsequentTimeRemaining;
-    //    float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"subsequent" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
-    //
-    //    if (floorf(timeRemaining) <= -2) {
-    //        cell.subsequentMinsLabel.hidden = YES;
-    //        cell.subsequentTimeRemainingLabel.hidden = YES;
-    //    } else if (floorf(timeRemaining) == 1) {
-    //        cell.subsequentMinsLabel.text = @"min";
-    //        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-    //    } else if (floorf(timeRemaining) <= 0) {
-    //        subsequentTimeRemaining = @"Arr";
-    //        cell.subsequentMinsLabel.hidden = YES;
-    //    } else {
-    //        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-    //    }
-    //
-    //    cell.subsequentTimeRemainingLabel.text = subsequentTimeRemaining;
+        //Get timing for subsequent
+        //TODO: Fix exception in the subsequent timing code block
+        NSString *subsequentTimeRemaining;
+        timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
+                                                busPosition:@"subsequent"
+                                              fromBusStopID:cell.busArrive.busStopID
+                                                   fromData:self.busData
+                                                     useAPI:NO
+                                                  direction:cell.busArrive.direction];
+    
+        if (floorf(timeRemaining) <= -2) {
+            cell.subsequentMinsLabel.hidden = YES;
+            cell.subsequentTimeRemainingLabel.hidden = YES;
+        } else if (floorf(timeRemaining) == 1) {
+            cell.subsequentMinsLabel.text = @"min";
+            subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+        } else if (floorf(timeRemaining) <= 0) {
+            subsequentTimeRemaining = @"Arr";
+            cell.subsequentMinsLabel.hidden = YES;
+        } else {
+            subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+        }
+    
+        cell.subsequentTimeRemainingLabel.text = subsequentTimeRemaining;
 
-    //Get timing for next3
-//    NSString *next3TimeRemaining;
-//    timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber busPosition:@"next3" fromBusStopID:cell.busArrive.busStopID fromData:self.busData useAPI:NO];
-//
-//    if (floorf(timeRemaining) <= -2) {
-//        cell.next3MinsLabel.hidden = YES;
-//        cell.next3TimeRemainingLabel.hidden = YES;
-//    } else if (floorf(timeRemaining) == 1) {
-//        cell.next3MinsLabel.text = @"min";
-//        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-//    } else if (floorf(timeRemaining) <= 0) {
-//        next3TimeRemaining = @"Arr";
-//        cell.next3MinsLabel.hidden = YES;
-//    } else {
-//        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-//    }
-//
-//    cell.next3TimeRemainingLabel.text = next3TimeRemaining;
-//
+//    Get timing for next3
+    NSString *next3TimeRemaining;
+    timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
+                                                busPosition:@"next3"
+                                              fromBusStopID:cell.busArrive.busStopID
+                                                   fromData:self.busData
+                                                     useAPI:NO
+                                                  direction:cell.busArrive.direction];
+
+    if (floorf(timeRemaining) <= -2) {
+        cell.next3MinsLabel.hidden = YES;
+        cell.next3TimeRemainingLabel.hidden = YES;
+    } else if (floorf(timeRemaining) == 1) {
+        cell.next3MinsLabel.text = @"min";
+        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    } else if (floorf(timeRemaining) <= 0) {
+        next3TimeRemaining = @"Arr";
+        cell.next3MinsLabel.hidden = YES;
+    } else {
+        next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    }
+
+    cell.next3TimeRemainingLabel.text = next3TimeRemaining;
+
     //Get bus load
     NSString *busLoad = [self.busArrival getBusLoadFor:cell.busArrive.busNumber
                                            busPosition:@"next"
