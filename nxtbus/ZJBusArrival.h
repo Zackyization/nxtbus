@@ -34,7 +34,6 @@
 
 -(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)userLocation;
 -(NSDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID;
--(BOOL)isBusHandicap;
 
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID;
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;

@@ -126,18 +126,21 @@
         cell.nextMinsLabel.hidden = YES;
     } else if (floorf(timeRemaining) == 1) {
         cell.nextMinsLabel.text = @"min";
+        cell.nextMinsLabel.hidden = NO;
         nextTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
     } else if (floorf(timeRemaining) <= 0) {
         nextTimeRemaining = @"Arr";
         cell.nextMinsLabel.hidden = YES;
     } else {
         nextTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+        [cell.nextTimeRemainingLabel setFont:[UIFont fontWithName:@"RobotoCondensed-Bold" size:37]];
+        [cell.nextTimeRemainingLabel setTextColor:[UIColor blackColor]];
+        cell.nextMinsLabel.hidden = NO;
     }
 
     cell.nextTimeRemainingLabel.text = nextTimeRemaining;
     
         //Get timing for subsequent
-        //TODO: Fix exception in the subsequent timing code block
         NSString *subsequentTimeRemaining;
         timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
                                                 busPosition:@"subsequent"
@@ -159,7 +162,6 @@
             subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
         }
     
-        cell.subsequentTimeRemainingLabel.text = subsequentTimeRemaining;
 
 //    Get timing for next3
     NSString *next3TimeRemaining;
@@ -233,8 +235,15 @@
     }
     
     //Get route name
-    NSString *routeName = [self.busArrival getRoute:cell.busArrive.busNumber fromBusStopID:cell.busArrive.busStopID direction:cell.busArrive.direction];
-    cell.busRouteNameLabel.text = routeName;
+    NSString *routeName;
+    @try {
+        routeName = [self.busArrival getRoute:cell.busArrive.busNumber fromBusStopID:cell.busArrive.busStopID direction:cell.busArrive.direction];
+    } @catch (NSException *exception) {
+        routeName = nil;
+        cell.busRouteNameLabel.text = @"-";
+    } @finally {
+        cell.busRouteNameLabel.text = routeName;
+    }
     
     return cell;
 }

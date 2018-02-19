@@ -130,7 +130,7 @@
     }];
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     self.mapView.camera.heading = newHeading.magneticHeading;
     [self.mapView setCamera:self.mapView.camera animated:YES];
 }
