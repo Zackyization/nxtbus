@@ -1557,13 +1557,13 @@
 		3D9C0FA5201B8EBE003CA991 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D556F43202F2E9E00BEB758 /* BusStopViewController.h */,
+				3D556F44202F2E9E00BEB758 /* BusStopViewController.m */,
+				3D556F46202F31B300BEB758 /* NearbyViewController.h */,
+				3D556F47202F31B300BEB758 /* NearbyViewController.m */,
 				3D42640C20396B5F007D4A4B /* SearchViewController.h */,
 				3D42640D20396B5F007D4A4B /* SearchViewController.m */,
 				3D556F4E202F777300BEB758 /* Table Cells */,
-				3D556F47202F31B300BEB758 /* NearbyViewController.m */,
-				3D556F46202F31B300BEB758 /* NearbyViewController.h */,
-				3D556F43202F2E9E00BEB758 /* BusStopViewController.h */,
-				3D556F44202F2E9E00BEB758 /* BusStopViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

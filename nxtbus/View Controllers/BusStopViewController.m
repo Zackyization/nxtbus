@@ -37,6 +37,12 @@
     if (!_busServices || _busServices.count == 0) {
         self.busServices = [self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID];
     }
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.tintColor = [UIColor grayColor];
+    [refresh addTarget:self action:@selector(refreshButton:) forControlEvents:UIControlEventValueChanged];
+    
+    self.tableView.refreshControl = refresh;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +62,18 @@
  */
 
 - (IBAction)refreshButton:(id)sender {
+    self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
+    self.busServices = [self.busArrival getLiveBusStopServiceNumbersFromBusStopID:self.busStopID fromData:self.busData useAPI:NO];
+
+    //when no data is received from api
+    if (!_busServices || _busServices.count == 0) {
+        self.busServices = [self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID];
+    }
+    
     [self.tableView reloadData];
+    [[NSOperationQueue currentQueue] addOperationWithBlock:^{
+        [self.tableView.refreshControl endRefreshing];
+    }];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

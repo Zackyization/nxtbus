@@ -20,12 +20,18 @@
 @property NSString *busStopTitleValue;
 @property NSString *busStopIDValue;
 
+@property (nonatomic) BOOL compassState;
+@property (weak, nonatomic) IBOutlet UIButton *compassButton;
+
 @end
 
 @implementation NearbyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.compassState = NO;
+    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
@@ -85,6 +91,29 @@
     [self.mapView setRegion:mapRegion animated:YES];
 }
 
+- (IBAction)compassToggle:(id)sender {
+    if (self.compassState == NO) {
+        self.compassState = YES;
+        [self.compassButton setImage:[UIImage imageNamed:@"compassOn"] forState:UIControlStateNormal];
+        [self centerUserLocation:nil];
+        
+        [self.mapView setScrollEnabled:NO];
+        [self.mapView setZoomEnabled:NO];
+        [self.mapView setRotateEnabled:NO];
+        
+        [self.locationManager startUpdatingHeading];
+    } else {
+        self.compassState = NO;
+        [self.compassButton setImage:[UIImage imageNamed:@"compassOff"] forState:UIControlStateNormal];
+        
+        [self.mapView setScrollEnabled:YES];
+        [self.mapView setZoomEnabled:YES];
+        [self.mapView setRotateEnabled:YES];
+        
+        [self.locationManager stopUpdatingHeading];
+    }
+}
+
 - (IBAction)refreshButton:(id)sender {
     [self.tableView.refreshControl beginRefreshing];
     //Refresh nearby bus stops
@@ -101,7 +130,10 @@
     }];
 }
 
-
+-(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    self.mapView.camera.heading = newHeading.magneticHeading;
+    [self.mapView setCamera:self.mapView.camera animated:YES];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *busStopCellIdentifer = @"BusStopCell";
