@@ -182,7 +182,6 @@ AVCaptureSession *session;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.qrVC stopScanning];
-    [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code"];
 }
 
 #pragma mark - Actions
@@ -193,10 +192,13 @@ AVCaptureSession *session;
 #pragma mark - QRCodeReaderViewControllerDelegate methods
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
     [reader stopScanning];
+    [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code."];
+    [reader startScanning];
 }
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader {
     [reader stopScanning];
+    
 }
 
 - (void)didReceiveMemoryWarning {
