@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface ScanViewController : UIViewController {
-    IBOutlet UIView *cameraView;
-}
-
-@property (nonatomic, retain) IBOutlet UIView *cameraView;
+@interface ScanViewController : UIViewController
 
 @end
