@@ -7,7 +7,7 @@
 //
 
 #import "RouteViewController.h"
-#import "ZJBusArrival.h"
+#import "busRouteCell.h"
 
 @interface RouteViewController ()
 
@@ -19,12 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.busArrive = [[ZJBusArrival alloc] init];
     self.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ Route", self.busService];
+    
+    self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:self.busArrive.direction];
+//    self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:1];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 - (IBAction)closeModal:(id)sender {
@@ -32,24 +38,25 @@
 }
 
 - (IBAction)centerCurrentBusStop:(id)sender {
-    
+    //TODO
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    static NSString *busStopCellIdentifer = @"BusStopCell";
-    //    busStopCellView *cell = (busStopCellView *)[tableView dequeueReusableCellWithIdentifier:busStopCellIdentifer];
-    //    if (cell == nil) {
-    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"busStopCell" owner:self options:nil];
-    //        cell = [nib objectAtIndex:0];
-    //    }
+        static NSString *busRouteCellIdentifer = @"BusRouteCell";
+        busRouteCell *cell = (busRouteCell *)[tableView dequeueReusableCellWithIdentifier:busRouteCellIdentifer];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"busRouteCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+    
+    //TODO: Design route table cells
     
     
-    
-    return nil;
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.routeStops count];
 }
 
 

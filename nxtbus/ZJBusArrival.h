@@ -38,12 +38,16 @@
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID;
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
 
+
+-(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal;
+
 //useAPI should be set to YES to get a direct feedback from the arrivelah API
 
+
+/* Bus info methods */
 //core method
 -(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam  useAPI:(BOOL)param direction:(int)directionVal;
 
-/* Bus info methods */
 //time remaining
 -(float)getBusTimeRemainingFor:(NSString *)busNumber busPosition:(NSString *)position fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option direction:(int)directionVal;
 
@@ -62,9 +66,5 @@
 //routeName
 -(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)directionVal;
 
-/* Subsequent bus info */
-
-
-/* next2 bus info */
 
 @end

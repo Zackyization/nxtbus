@@ -100,6 +100,18 @@
     return result;
 }
 
+-(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal {
+    NSError *error;
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", busNumber] ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSDictionary *busRouteDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    
+    NSArray *arrayOfStops;
+    arrayOfStops = [busRouteDictionary valueForKeyPath:[NSString stringWithFormat:@"%i.stops", directionVal]];
+    
+    return arrayOfStops;
+}
 
 -(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
     NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];

@@ -22,6 +22,7 @@
 
 @property (nonatomic) NSString *busServiceVal;
 @property (nonatomic) NSString *busStopIDval;
+@property (nonatomic) ZJBusArrival *busArriveVal;
 
 @end
 
@@ -251,6 +252,7 @@
     busStopServiceCellView *cell = (busStopServiceCellView *)[tableView cellForRowAtIndexPath:indexPath];
     
     self.busServiceVal = cell.busServiceLabel.text;
+    self.busArriveVal = cell.busArrive;
     [self performSegueWithIdentifier:@"busRouteModal" sender:self];
 }
 
@@ -265,6 +267,7 @@
      if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
          RouteViewController *vc = [segue destinationViewController];
          vc.busService = self.busServiceVal;
+         vc.busArrive = self.busArriveVal;
 //         vc.busStopID = self.busStopIDValue;
 //         [vc.busStopIDLabel setText:self.busStopIDValue];
      }

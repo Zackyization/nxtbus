@@ -471,6 +471,8 @@
 		3D5654622025F57E0095C20C /* BusDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654612025F57E0095C20C /* BusDB.db */; };
 		3D565464202608F40095C20C /* bus_stop_services.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D565463202608F40095C20C /* bus_stop_services.json */; };
 		3D71876C203BAC5A003369DF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D71876B203BAC5A003369DF /* RouteViewController.m */; };
+		3D71876E203C0D49003369DF /* busRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D71876D203C0D49003369DF /* busRouteCell.xib */; };
+		3D718771203C2ED0003369DF /* busRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D718770203C2ED0003369DF /* busRouteCell.m */; };
 		3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1773201CDA7900F464FF /* CoreLocation.framework */; };
 		3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1775201CDA8900F464FF /* MapKit.framework */; };
 		3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */; };
@@ -966,6 +968,9 @@
 		3D565463202608F40095C20C /* bus_stop_services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bus_stop_services.json; sourceTree = "<group>"; };
 		3D71876A203BAC5A003369DF /* RouteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RouteViewController.h; sourceTree = "<group>"; };
 		3D71876B203BAC5A003369DF /* RouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RouteViewController.m; sourceTree = "<group>"; };
+		3D71876D203C0D49003369DF /* busRouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = busRouteCell.xib; sourceTree = "<group>"; };
+		3D71876F203C2ED0003369DF /* busRouteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = busRouteCell.h; sourceTree = "<group>"; };
+		3D718770203C2ED0003369DF /* busRouteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = busRouteCell.m; sourceTree = "<group>"; };
 		3D9B1773201CDA7900F464FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D9B1775201CDA8900F464FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBusArrival.m; sourceTree = "<group>"; };
@@ -1513,10 +1518,13 @@
 		3D556F4E202F777300BEB758 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3D71876F203C2ED0003369DF /* busRouteCell.h */,
+				3D718770203C2ED0003369DF /* busRouteCell.m */,
+				3D71876D203C0D49003369DF /* busRouteCell.xib */,
 				3D556F49202F770B00BEB758 /* busStopCell.xib */,
-				3DD6997A202A29E8008DE259 /* busStopServiceCell.xib */,
 				3DD6997C202A2FFE008DE259 /* busStopCellView.h */,
 				3DD6997D202A2FFE008DE259 /* busStopCellView.m */,
+				3DD6997A202A29E8008DE259 /* busStopServiceCell.xib */,
 				3D556F4F202F782D00BEB758 /* busStopServiceCellView.h */,
 				3D556F50202F782D00BEB758 /* busStopServiceCellView.m */,
 			);
@@ -2025,6 +2033,7 @@
 				3D4262E72035C40A007D4A4B /* 88.json in Resources */,
 				3D4263AB2035C40A007D4A4B /* 5N.json in Resources */,
 				3D4263802035C40A007D4A4B /* 302A.json in Resources */,
+				3D71876E203C0D49003369DF /* busRouteCell.xib in Resources */,
 				3D4263CA2035C40B007D4A4B /* 98B.json in Resources */,
 				3D4262952035C40A007D4A4B /* 40.json in Resources */,
 				3D4263962035C40A007D4A4B /* 855.json in Resources */,
@@ -2246,6 +2255,7 @@
 			files = (
 				3DD6997E202A2FFE008DE259 /* busStopCellView.m in Sources */,
 				3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */,
+				3D718771203C2ED0003369DF /* busRouteCell.m in Sources */,
 				3D556F48202F31B300BEB758 /* NearbyViewController.m in Sources */,
 				3D002E40201A35ED001FC940 /* main.m in Sources */,
 				3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */,
