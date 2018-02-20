@@ -470,6 +470,7 @@
 		3D5654602024E68A0095C20C /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D56545A2024E6890095C20C /* RobotoCondensed-BoldItalic.ttf */; };
 		3D5654622025F57E0095C20C /* BusDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 3D5654612025F57E0095C20C /* BusDB.db */; };
 		3D565464202608F40095C20C /* bus_stop_services.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D565463202608F40095C20C /* bus_stop_services.json */; };
+		3D71876C203BAC5A003369DF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D71876B203BAC5A003369DF /* RouteViewController.m */; };
 		3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1773201CDA7900F464FF /* CoreLocation.framework */; };
 		3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9B1775201CDA8900F464FF /* MapKit.framework */; };
 		3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */; };
@@ -963,6 +964,8 @@
 		3D56545A2024E6890095C20C /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
 		3D5654612025F57E0095C20C /* BusDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = BusDB.db; sourceTree = "<group>"; };
 		3D565463202608F40095C20C /* bus_stop_services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bus_stop_services.json; sourceTree = "<group>"; };
+		3D71876A203BAC5A003369DF /* RouteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RouteViewController.h; sourceTree = "<group>"; };
+		3D71876B203BAC5A003369DF /* RouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RouteViewController.m; sourceTree = "<group>"; };
 		3D9B1773201CDA7900F464FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D9B1775201CDA8900F464FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D9C0FA2201B8EB7003CA991 /* ZJBusArrival.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBusArrival.m; sourceTree = "<group>"; };
@@ -1561,6 +1564,8 @@
 				3D556F44202F2E9E00BEB758 /* BusStopViewController.m */,
 				3D556F46202F31B300BEB758 /* NearbyViewController.h */,
 				3D556F47202F31B300BEB758 /* NearbyViewController.m */,
+				3D71876A203BAC5A003369DF /* RouteViewController.h */,
+				3D71876B203BAC5A003369DF /* RouteViewController.m */,
 				3D42640C20396B5F007D4A4B /* SearchViewController.h */,
 				3D42640D20396B5F007D4A4B /* SearchViewController.m */,
 				3D556F4E202F777300BEB758 /* Table Cells */,
@@ -2247,6 +2252,7 @@
 				3D556F51202F782D00BEB758 /* busStopServiceCellView.m in Sources */,
 				3D42640E20396B5F007D4A4B /* SearchViewController.m in Sources */,
 				3D556F45202F2E9E00BEB758 /* BusStopViewController.m in Sources */,
+				3D71876C203BAC5A003369DF /* RouteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

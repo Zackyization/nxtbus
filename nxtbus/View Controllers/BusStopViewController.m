@@ -10,6 +10,7 @@
 #import "ZJBusArrival.h"
 
 #import "busStopServiceCellView.h"
+#import "RouteViewController.h"
 
 @interface BusStopViewController ()
 
@@ -18,6 +19,9 @@
 @property NSDictionary *busData;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) NSString *busServiceVal;
+@property (nonatomic) NSString *busStopIDval;
 
 @end
 
@@ -51,15 +55,6 @@
 }
 
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (IBAction)refreshButton:(id)sender {
     self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
@@ -76,7 +71,7 @@
     }];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *busCellIdentifer = @"BusStopServiceCell";
     busStopServiceCellView *cell = (busStopServiceCellView *)[tableView dequeueReusableCellWithIdentifier:busCellIdentifer];
@@ -251,5 +246,29 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.busServices count];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    busStopServiceCellView *cell = (busStopServiceCellView *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    self.busServiceVal = cell.busServiceLabel.text;
+    [self performSegueWithIdentifier:@"busRouteModal" sender:self];
+}
+
+
+
+ #pragma mark - Navigation
+ 
+//  In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//  Get the new view controller using [segue destinationViewController].
+//  Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
+         RouteViewController *vc = [segue destinationViewController];
+         vc.busService = self.busServiceVal;
+//         vc.busStopID = self.busStopIDValue;
+//         [vc.busStopIDLabel setText:self.busStopIDValue];
+     }
+ }
+ 
 
 @end

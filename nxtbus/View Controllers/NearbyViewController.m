@@ -39,9 +39,6 @@
     [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
     
-    self.mapView.delegate = self;
-    self.mapView.showsUserLocation = YES;
-    
     _busArrive = [[ZJBusArrival alloc] init];
 
     [_busArrive addBusStopAnnotationsToMap:self.mapView fromUserLocation:self.locationManager.location];
@@ -55,6 +52,7 @@
     
     self.tableView.refreshControl = refresh;
 }
+
 -(void)viewDidAppear:(BOOL)animated {
     [self centerUserLocation:nil];
     _nearbyBusStops = [_busArrive getNearbyBusStops:self.locationManager.location];
