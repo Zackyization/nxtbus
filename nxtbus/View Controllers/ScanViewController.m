@@ -61,117 +61,6 @@ AVCaptureSession *session;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[qrVC]|" options:0 metrics:nil views:dictionary]];
     
     [self.qrVC didMoveToParentViewController:self];
-                          
-//    session = [[AVCaptureSession alloc]init];
-//    [session setSessionPreset:AVCaptureSessionPresetPhoto];
-//
-//    AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-//    NSError *error;
-//    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-//
-//    if ([session canAddInput:deviceInput]) {
-//        [session addInput:deviceInput];
-//    }
-//
-//    AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-//    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-//    CALayer *rootLayer = [[self view] layer];
-//    [rootLayer setMasksToBounds:YES];
-//    CGRect frame = cameraView.frame;
-//
-//    [previewLayer setFrame:frame];
-//
-//    [rootLayer insertSublayer:previewLayer atIndex:0];
-//
-//    [session startRunning];
-    // Do any additional setup after loading the view.
-    /*
-    if (![QRCodeReader isAvailable] || ![QRCodeReader supportsQRCode]) {
-        return;
-    }
-    __weak typeof(self) weakSelf = self;
-    [self checkCameraPermission: ^{
-        
-        __block __weak QRCodeReader* reader;
-        QRCodeReaderViewController* qrVC = [QRCodeReaderViewController readerWithBuilderBlock:^(QRCodeReaderViewControllerBuilder *builder){
-            reader = builder.reader;
-        }];
-        
-        //block to read the result
-        [reader setCompletionWithBlock:^(NSString *result) {
-            [reader stopScanning];
-            [self dismissViewControllerAnimated:YES completion: nil];
-            [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code."];
-        }];
-        
-        //block when cancel is pressed
-        [qrVC setCompletionWithBlock:^(NSString *result) {
-            [reader stopScanning];
-            [self dismissViewControllerAnimated:YES completion: nil];
-        }];
-        
-        // Retrieve the QRCode content via delegate
-        qrVC.delegate = weakSelf;
-        
-        [weakSelf presentViewController:qrVC animated:true completion:nil];
-    }];
-    */
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-//    if (![QRCodeReader isAvailable] || ![QRCodeReader supportsQRCode]) {
-//        return;
-//    }
-//    __weak typeof(self) weakSelf = self;
-//    [self checkCameraPermission: ^{
-//
-//        __block __weak QRCodeReader* reader;
-//        QRCodeReaderViewController* qrVC = [QRCodeReaderViewController readerWithBuilderBlock:^(QRCodeReaderViewControllerBuilder *builder){
-//            reader = builder.reader;
-//        }];
-//
-//        //block to read the result
-//        [reader setCompletionWithBlock:^(NSString *result) {
-//            [reader stopScanning];
-//            [self dismissViewControllerAnimated:YES completion: nil];
-//            [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code."];
-//        }];
-//
-//        //block when cancel is pressed
-//        [qrVC setCompletionWithBlock:^(NSString *result) {
-//            [reader stopScanning];
-//            [self dismissViewControllerAnimated:YES completion: nil];
-//        }];
-//
-//        // Retrieve the QRCode content via delegate
-//        qrVC.delegate = weakSelf;
-//
-//        [weakSelf presentViewController:qrVC animated:true completion:nil];
-//    }];
-    /*
-    session = [[AVCaptureSession alloc]init];
-    [session setSessionPreset:AVCaptureSessionPresetPhoto];
-    
-    AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    NSError *error;
-    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-    
-    if ([session canAddInput:deviceInput]) {
-        [session addInput:deviceInput];
-    }
-    
-    AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    CALayer *rootLayer = [[self view] layer];
-    [rootLayer setMasksToBounds:YES];
-    CGRect frame = self.cameraView.frame;
-    
-    [previewLayer setFrame:frame];
-    
-    [rootLayer insertSublayer:previewLayer atIndex:0];
-    
-    [session startRunning];
-    */
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -192,7 +81,7 @@ AVCaptureSession *session;
 #pragma mark - QRCodeReaderViewControllerDelegate methods
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
     [reader stopScanning];
-    [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code."];
+    [self showAlertWithTitle:@"Success!" message:@"Points were successfully added!"];
     [reader startScanning];
 }
 
@@ -240,17 +129,5 @@ AVCaptureSession *session;
     [controller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:controller animated:true completion:nil];
 }
-
-//# pragma mark - QRCodeReaderViewControllerDelegate Methods
-//- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
-//    [reader stopScanning];
-//    [self dismissViewControllerAnimated:YES completion: nil];
-//    [self showAlertWithTitle:@"Success!" message:@"You have successfully scanned the QR Code"];
-//}
-//
-//- (void)readerDidCancel:(QRCodeReaderViewController *)reader {
-//    [reader stopScanning];
-//    [self dismissViewControllerAnimated:YES completion: nil];
-//}
 
 @end
