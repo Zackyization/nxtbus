@@ -109,6 +109,20 @@
     return result;
 }
 
+-(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
+    NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];
+    nearbyStopsArray = [self getNearbyBusStops:location];
+    
+    for (ZJBusArrival *bus in nearbyStopsArray) {
+        MKPointAnnotation *busPoint = [[MKPointAnnotation alloc] init];
+        busPoint.coordinate = bus.busStopLocation.coordinate;
+        busPoint.title = bus.busStopName;
+        busPoint.subtitle = bus.busStopID;
+        
+        [map addAnnotation:busPoint];
+    }
+}
+
 /* Bus Stop Route Info Methods */
 
 
@@ -149,21 +163,66 @@
     return busStopName;
 }
 
-
-
--(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
-    NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];
-    nearbyStopsArray = [self getNearbyBusStops:location];
+-(NSArray *)getTrainStationsNearbyBusStop:(NSString *)busStopID {
+    //get bus stop location
+    CLLocationCoordinate2D busStopCoordinates = [self getBusStopLocationOfBusStopID:busStopID];
+    CLLocation *busStopLocation = [[CLLocation alloc] initWithLatitude:busStopCoordinates.latitude longitude:busStopCoordinates.longitude];
     
-    for (ZJBusArrival *bus in nearbyStopsArray) {
-        MKPointAnnotation *busPoint = [[MKPointAnnotation alloc] init];
-        busPoint.coordinate = bus.busStopLocation.coordinate;
-        busPoint.title = bus.busStopName;
-        busPoint.subtitle = bus.busStopID;
-        
-        [map addAnnotation:busPoint];
+    //get train station location
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT coordinates FROM train_stations";
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:nil error:&error];
+    
+    NSMutableArray *trainStations = [[NSMutableArray alloc] init];
+    NSString *coordinate;
+    while ([results next]) {
+        coordinate = [NSString stringWithFormat:@"%@", [results stringForColumn:@"coordinates"]];
+        [trainStations addObject:coordinate];
     }
+    
+    [database close];
+    
+    CLLocation *trainStationLocation;
+    for (int i = 0; i < [trainStations count]; i++) {
+        NSString *stationStringCoordinate = [trainStations objectAtIndex:i];
+        NSArray *trainCoordinateValues = [stationStringCoordinate componentsSeparatedByString:@","];
+        trainStationLocation = [[CLLocation alloc] initWithLatitude:[[trainCoordinateValues objectAtIndex:0] floatValue] longitude:[[trainCoordinateValues objectAtIndex:1] floatValue]];
+        
+        if ([busStopLocation distanceFromLocation:trainStationLocation] <= 150) {
+
+            [database open];
+            NSString *sqlQuery = @"SELECT code FROM train_stations WHERE coordinates IN (?)";
+            NSArray *values = [[NSArray alloc] initWithObjects:stationStringCoordinate, nil];
+            NSError *error;
+            //Query Result
+            FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+            
+            NSArray *trainStationCodes;
+            if ([results next]) {
+                NSString *codes = [NSString stringWithFormat:@"%@", [results stringForColumn:@"code"]];
+                
+               trainStationCodes = [codes componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                trainStationCodes = [trainStationCodes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];            }
+            
+            [database close];
+            
+            return trainStationCodes;
+        }
+    }
+    
+    return nil;
 }
+
+
+
 
 -(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID {
     NSString *busLat;

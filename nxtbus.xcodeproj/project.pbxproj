@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CDEF0E044F13BDFC83FDB68 /* libPods-nxtbusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */; };
+		0A62A0F6203A72B40039AA90 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A62A0F5203A72B40039AA90 /* ScanViewController.m */; };
 		3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E31201A35ED001FC940 /* AppDelegate.m */; };
 		3D002E38201A35ED001FC940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E36201A35ED001FC940 /* Main.storyboard */; };
 		3D002E3A201A35ED001FC940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E39201A35ED001FC940 /* Assets.xcassets */; };
@@ -479,7 +479,8 @@
 		3DCF4EC42022BC1000520A29 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCF4EC32022BC1000520A29 /* libsqlite3.dylib */; };
 		3DD6997B202A29E9008DE259 /* busStopServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD6997A202A29E8008DE259 /* busStopServiceCell.xib */; };
 		3DD6997E202A2FFE008DE259 /* busStopCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6997D202A2FFE008DE259 /* busStopCellView.m */; };
-		4F335B943F0082DCC7E8DE9C /* libPods-nxtbus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 428C902A71B926E2DA27312F /* libPods-nxtbus.a */; };
+		4AEDBB188D9BC24101AC93D2 /* Pods_nxtbus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8133F403A1D4B7D6BB75A6 /* Pods_nxtbus.framework */; };
+		A27F329DC8F6F43DA6CC2D18 /* Pods_nxtbusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5CDCBF887C943543A3A764 /* Pods_nxtbusUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -493,8 +494,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A62A0F4203A72B40039AA90 /* ScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		0A62A0F5203A72B40039AA90 /* ScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		22D349D9F0458271821C9738 /* Pods-nxtbus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbus.release.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus.release.xcconfig"; sourceTree = "<group>"; };
-		23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nxtbusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8133F403A1D4B7D6BB75A6 /* Pods_nxtbus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nxtbus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E2D201A35ED001FC940 /* nxtbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nxtbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E30201A35ED001FC940 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D002E31201A35ED001FC940 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -979,8 +982,8 @@
 		3DD6997A202A29E8008DE259 /* busStopServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = busStopServiceCell.xib; sourceTree = "<group>"; };
 		3DD6997C202A2FFE008DE259 /* busStopCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = busStopCellView.h; sourceTree = "<group>"; };
 		3DD6997D202A2FFE008DE259 /* busStopCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = busStopCellView.m; sourceTree = "<group>"; };
-		428C902A71B926E2DA27312F /* libPods-nxtbus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nxtbus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		474CD8AF489FC28DEF6FD71A /* Pods-nxtbusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbusUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4B5CDCBF887C943543A3A764 /* Pods_nxtbusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nxtbusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAF49E9B71CD4553F2B88F7 /* Pods-nxtbus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus.debug.xcconfig"; sourceTree = "<group>"; };
 		BECD25DE97553611DC453B69 /* Pods-nxtbusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nxtbusUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nxtbusUITests/Pods-nxtbusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -993,7 +996,7 @@
 				3DCF4EC42022BC1000520A29 /* libsqlite3.dylib in Frameworks */,
 				3D9B1776201CDA8E00F464FF /* MapKit.framework in Frameworks */,
 				3D9B1774201CDA8000F464FF /* CoreLocation.framework in Frameworks */,
-				4F335B943F0082DCC7E8DE9C /* libPods-nxtbus.a in Frameworks */,
+				4AEDBB188D9BC24101AC93D2 /* Pods_nxtbus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,7 +1004,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CDEF0E044F13BDFC83FDB68 /* libPods-nxtbusUITests.a in Frameworks */,
+				A27F329DC8F6F43DA6CC2D18 /* Pods_nxtbusUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,8 +1562,8 @@
 				3DCF4EC32022BC1000520A29 /* libsqlite3.dylib */,
 				3D9B1775201CDA8900F464FF /* MapKit.framework */,
 				3D9B1773201CDA7900F464FF /* CoreLocation.framework */,
-				428C902A71B926E2DA27312F /* libPods-nxtbus.a */,
-				23DF14D451A42736B92EC9E9 /* libPods-nxtbusUITests.a */,
+				2D8133F403A1D4B7D6BB75A6 /* Pods_nxtbus.framework */,
+				4B5CDCBF887C943543A3A764 /* Pods_nxtbusUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1576,6 +1579,8 @@
 				3D71876B203BAC5A003369DF /* RouteViewController.m */,
 				3D42640C20396B5F007D4A4B /* SearchViewController.h */,
 				3D42640D20396B5F007D4A4B /* SearchViewController.m */,
+				0A62A0F4203A72B40039AA90 /* ScanViewController.h */,
+				0A62A0F5203A72B40039AA90 /* ScanViewController.m */,
 				3D556F4E202F777300BEB758 /* Table Cells */,
 			);
 			path = "View Controllers";
@@ -2156,9 +2161,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-nxtbus/Pods-nxtbus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${PODS_ROOT}/MasterpassQRScanSDK/Frameworks/MasterpassQRScanSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MasterpassQRScanSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2254,6 +2264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DD6997E202A2FFE008DE259 /* busStopCellView.m in Sources */,
+				0A62A0F6203A72B40039AA90 /* ScanViewController.m in Sources */,
 				3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */,
 				3D718771203C2ED0003369DF /* busRouteCell.m in Sources */,
 				3D556F48202F31B300BEB758 /* NearbyViewController.m in Sources */,
@@ -2414,13 +2425,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CP9GHWK7UB;
 				INFOPLIST_FILE = nxtbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zildjian.nxtbus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ite.nxtbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 			};
 			name = Debug;
 		};
@@ -2430,13 +2442,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CP9GHWK7UB;
 				INFOPLIST_FILE = nxtbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zildjian.nxtbus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ite.nxtbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 			};
 			name = Release;
 		};
