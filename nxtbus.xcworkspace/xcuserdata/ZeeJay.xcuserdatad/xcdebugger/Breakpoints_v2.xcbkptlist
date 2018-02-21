@@ -66,7 +66,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "207"
             endingLineNumber = "207"
-            landmarkName = "-getBusTimeRemainingFor:busPosition:fromBusStopID:fromData:useAPI:direction:"
+            landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -82,7 +82,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "-getBusTimeRemainingFor:busPosition:fromBusStopID:fromData:useAPI:direction:"
+            landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,8 +99,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
             endingLineNumber = "218"
-            landmarkName = "-getBusTimeRemainingFor:busPosition:fromBusStopID:fromData:useAPI:direction:"
-            landmarkType = "7">
+            landmarkName = "ZJBusArrival"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -116,7 +116,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
             endingLineNumber = "214"
-            landmarkName = "-getBusTimeRemainingFor:busPosition:fromBusStopID:fromData:useAPI:direction:"
+            landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
