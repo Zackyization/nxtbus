@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (nonatomic) NSString *busStopIDVal;
-
 @end
 
 @implementation RouteViewController
@@ -74,9 +72,17 @@
 }
 
 - (IBAction)centerOnCurrentBusStop:(id)sender {
-    //TODO
     MKCoordinateRegion mapRegion;
     mapRegion.center = [self.busArrive getBusStopLocationOfBusStopID:self.currentBusStopID];
+    mapRegion.span.latitudeDelta = 0.003;
+    mapRegion.span.longitudeDelta = 0.003;
+    
+    [self.mapView setRegion:mapRegion animated:YES];
+}
+
+-(void)centerOnBusStop:(NSString *)busStopID {
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = [self.busArrive getBusStopLocationOfBusStopID:busStopID];
     mapRegion.span.latitudeDelta = 0.003;
     mapRegion.span.longitudeDelta = 0.003;
     
@@ -164,6 +170,11 @@
     return [self.routeStops count];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    busRouteCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self centerOnBusStop:cell.busStopIDLabel.text];
+}
+
 -(UIColor *)determineStationColour:(NSString *)stationCode {
     UIColor *green = [UIColor colorWithRed:17.0f/255.0f green:134.0f/255.0f blue:37.0f/255.0f alpha:1.0f];
     UIColor *red = [UIColor colorWithRed:209.0f/255.0f green:12.0f/255.0f blue:24.0f/255.0f alpha:1.0f];
@@ -192,6 +203,7 @@
     
     return nil;
 }
+
 /*
 #pragma mark - Navigation
 
