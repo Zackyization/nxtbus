@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdH-ng-Hii">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdH-ng-Hii">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -410,8 +410,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="centerCurrentBusStop:" destination="2qr-J8-C3E" eventType="touchUpInside" id="DCh-h8-xbk"/>
-                                    <action selector="centerUserLocation:" destination="5CM-vM-dGL" eventType="touchUpInside" id="lp5-Ub-f68"/>
+                                    <action selector="centerOnCurrentBusStop:" destination="2qr-J8-C3E" eventType="touchUpInside" id="KBz-mE-7Wo"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ljT-EA-J78">
@@ -468,7 +467,9 @@
                         <viewLayoutGuide key="safeArea" id="0er-kZ-bIe"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="0dL-3J-gQC" id="syq-rQ-SPO"/>
                         <outlet property="navigationBar" destination="CFS-83-AH5" id="eva-Ab-vDW"/>
+                        <outlet property="tableView" destination="ljT-EA-J78" id="mqn-U7-7ZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnV-9h-SZn" userLabel="First Responder" sceneMemberID="firstResponder"/>

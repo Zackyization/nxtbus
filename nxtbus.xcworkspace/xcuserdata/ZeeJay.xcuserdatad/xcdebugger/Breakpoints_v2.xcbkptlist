@@ -11,7 +11,7 @@
             condition = "j == 1"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/View Controllers/BusStopViewController.m"
-            timestampString = "540633897.422049"
+            timestampString = "540897508.802402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -28,7 +28,7 @@
             condition = "i == 1"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/View Controllers/BusStopViewController.m"
-            timestampString = "540633897.4228801"
+            timestampString = "540897508.802825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -44,7 +44,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/View Controllers/BusStopViewController.m"
-            timestampString = "540633897.423786"
+            timestampString = "540897508.803089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -61,11 +61,11 @@
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540633897.424257"
+            timestampString = "540924028.954434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -77,11 +77,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540633897.425527"
+            timestampString = "540924028.9548301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,11 +94,11 @@
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540633897.4264441"
+            timestampString = "540924028.955097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "ZJBusArrival"
             landmarkType = "3">
          </BreakpointContent>
@@ -106,17 +106,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540633897.4272881"
+            timestampString = "540924028.9553649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-getBusStopServiceNumbersFromBusStopID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/RouteViewController.m"
+            timestampString = "540924028.955664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/RouteViewController.m"
+            timestampString = "540924028.956364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/ZJBusArrival.m"
+            timestampString = "540924028.956877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "-getTrainStationsNearbyBusStop:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/ZJBusArrival.m"
+            timestampString = "540924028.9573129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "-getTrainStationsNearbyBusStop:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/RouteViewController.m"
+            timestampString = "540924028.957814"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-determineStationColour:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/RouteViewController.m"
+            timestampString = "540924028.958403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-determineStationColour:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
