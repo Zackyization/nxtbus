@@ -59,7 +59,16 @@
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://arrivelah.herokuapp.com/?id=%@", busStopID];
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];
-    NSDictionary *services = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    NSDictionary *services; //TODO: Handle exception when no connection
+    
+    @try {
+        services = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+    } @catch (NSException *exception) {
+        return nil;
+    } @finally {
+        
+    }
     
     NSArray *busNumbers = [[services objectForKey:@"services"] valueForKey:@"no"];
     if (!busNumbers || !busNumbers.count) {
@@ -99,6 +108,47 @@
     NSArray *result = [NSArray arrayWithArray:busNumbers];
     return result;
 }
+
+/* Bus Stop Route Info Methods */
+
+
+-(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal {
+    NSError *error;
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", busNumber] ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSDictionary *busRouteDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    
+    NSArray *arrayOfStops;
+    arrayOfStops = [busRouteDictionary valueForKeyPath:[NSString stringWithFormat:@"%i.stops", directionVal]];
+    
+    return arrayOfStops;
+}
+
+-(NSString *)getBusStopName:(NSString *)busStopID {
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no IN (?)";
+    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    NSString *busStopName;
+    if ([results next]) {
+        busStopName = [NSString stringWithFormat:@"%@", [results stringForColumn:@"name"]];
+    }
+    
+    [database close];
+    
+    return busStopName;
+}
+
 
 
 -(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {

@@ -45,11 +45,6 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-n5-nF8">
-                        <rect key="frame" x="346" y="73" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="0"/>
-                    </button>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seatsAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="TJ0-f2-6tl">
                         <rect key="frame" x="30" y="46" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -108,6 +103,11 @@
                         <rect key="frame" x="82" y="46" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-n5-nF8">
+                        <rect key="frame" x="344" y="68" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="favoriteOff"/>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -128,6 +128,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="favoriteOff" width="30" height="30"/>
         <image name="routeIcon" width="20" height="20"/>
         <image name="seatsAvailable" width="20" height="20"/>
         <image name="singleDeckBus" width="20" height="20"/>
