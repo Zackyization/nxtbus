@@ -39,12 +39,23 @@
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
 
 
+
+/* Bus Stop Route Info Methods */
 -(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal;
 
-//useAPI should be set to YES to get a direct feedback from the arrivelah API
+//Bus stop name
+-(NSString *)getBusStopName:(NSString *)busStopID;
 
+//Bus stop location
+
+//Nearby train stations
+    //Compare bus stop location with every train station coordinate in train_stations
+    //If distanceFrom is less than 100m, show the train ID
+
+//Add bus route to map
 
 /* Bus info methods */
+//useAPI should be set to YES to get a direct feedback from the arrivelah API
 //core method
 -(NSDictionary *)getBusNumberDictionary:(NSString *)busNumber fromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam  useAPI:(BOOL)param direction:(int)directionVal;
 

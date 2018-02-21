@@ -10,4 +10,17 @@
 
 @interface busRouteCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *busStopImageState;
+@property (weak, nonatomic) IBOutlet UIView *topRouteLine;
+@property (weak, nonatomic) IBOutlet UIView *bottomRouteLine;
+
+@property (weak, nonatomic) IBOutlet UILabel *busStopIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *busStopServiceNameLabel;
+
+//Train IDs
+@property (weak, nonatomic) IBOutlet UILabel *firstTrainIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondTrainLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdTrainLabel;
+
+
 @end

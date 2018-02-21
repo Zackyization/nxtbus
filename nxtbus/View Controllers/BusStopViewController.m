@@ -253,6 +253,7 @@
     
     self.busServiceVal = cell.busServiceLabel.text;
     self.busArriveVal = cell.busArrive;
+    self.busStopIDval = self.busStopID;
     [self performSegueWithIdentifier:@"busRouteModal" sender:self];
 }
 
@@ -268,8 +269,7 @@
          RouteViewController *vc = [segue destinationViewController];
          vc.busService = self.busServiceVal;
          vc.busArrive = self.busArriveVal;
-//         vc.busStopID = self.busStopIDValue;
-//         [vc.busStopIDLabel setText:self.busStopIDValue];
+         vc.currentBusStopID = self.busStopIDval;
      }
  }
  

@@ -19,11 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.busArrive = [[ZJBusArrival alloc] init];
     self.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ Route", self.busService];
     
     self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:self.busArrive.direction];
-//    self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:1];
 
 }
 
@@ -49,7 +47,21 @@
             cell = [nib objectAtIndex:0];
         }
     
-    //TODO: Design route table cells
+    cell.busStopIDLabel.text = [self.routeStops objectAtIndex:indexPath.row];
+    cell.busStopServiceNameLabel.text = [self.busArrive getBusStopName:cell.busStopIDLabel.text];
+
+    //Determinining route line appearence for first and alst stop
+    if (indexPath.row == 0) {
+        cell.topRouteLine.hidden = YES;
+    } else if (indexPath.row == [self.routeStops count] - 1) {
+        cell.bottomRouteLine.hidden = YES;
+    } else {
+        cell.topRouteLine.hidden = NO;
+        cell.bottomRouteLine.hidden = NO;
+    }
+    
+    //Determine current stop
+    //LEFT OFF HERE, continue working on the bus route cells
     
     
     return cell;
