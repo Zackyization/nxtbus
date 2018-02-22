@@ -111,8 +111,8 @@
                         <outlet property="searchBar" destination="VEI-R1-tXD" id="Ka8-TW-3nd"/>
                         <outlet property="segmentedControl" destination="OVq-1i-S1w" id="Aif-XM-0Oh"/>
                         <outlet property="tableView" destination="Jox-8x-ne7" id="JmM-MU-kVa"/>
-                        <segue destination="2qr-J8-C3E" kind="presentation" id="Sn0-z4-MqG"/>
-                        <segue destination="PfX-vg-fdN" kind="presentation" id="BoA-WK-kCR"/>
+                        <segue destination="2qr-J8-C3E" kind="presentation" identifier="busRouteModal" id="Sn0-z4-MqG"/>
+                        <segue destination="PfX-vg-fdN" kind="presentation" identifier="busStopModal" id="BoA-WK-kCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQb-aH-Iyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,7 +531,7 @@
         <image name="scanTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wf3-W6-dE8"/>
+        <segue reference="Sn0-z4-MqG"/>
         <segue reference="BoA-WK-kCR"/>
     </inferredMetricsTieBreakers>
 </document>

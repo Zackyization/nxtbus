@@ -13,6 +13,9 @@
 #import "FMDatabase.h"
 #import "ZJBusArrival.h"
 
+#import "BusStopViewController.h"
+#import "RouteViewController.h"
+
 @interface SearchViewController ()
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -22,6 +25,10 @@
 @property (nonatomic) NSMutableArray *tableResults;
 @property (nonatomic) BOOL clearTable;
 @property (nonatomic) ZJBusArrival *busArrive;
+
+@property (nonatomic) NSString *busStopIDVal;
+@property (nonatomic) NSString *busStopServiceVal;
+
 
 @end
 
@@ -62,29 +69,31 @@
         NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
         
         FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+        
+        [database open];
+        NSString *sqlQuery;
         if (self.segmentedControl.selectedSegmentIndex == 0) {
             //Search for bus stops
-            [database open];
-            NSString *sqlQuery = @"SELECT no FROM bus_stops WHERE no LIKE ? OR name LIKE ?";
-            NSString *searchQuery = [NSString stringWithFormat:@"%%%@%%", searchText];
-            NSArray *values = [[NSArray alloc] initWithObjects:searchQuery, searchQuery, nil];
-            NSError *error;
-            //Query Result
-            FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
-            
-            NSString *stopResult;
-            while ([results next]) {
-                stopResult = [NSString stringWithFormat:@"%@", [results stringForColumn:@"no"]];
-                [self.tableResults addObject:stopResult];
-            }
-            
-            [database close];
-            
-            [self.tableView reloadData];
+            sqlQuery = @"SELECT no FROM bus_stops WHERE no LIKE ? OR name LIKE ?";
         } else {
             //Search for bus services
-            
+            sqlQuery = @"SELECT no FROM bus_services WHERE no LIKE ?";
         }
+        
+        NSString *searchQuery = [NSString stringWithFormat:@"%%%@%%", searchText];
+        NSArray *values = [[NSArray alloc] initWithObjects:searchQuery, searchQuery, nil];
+        NSError *error;
+        //Query Result
+        FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+        
+        NSString *stopResult;
+        while ([results next]) {
+            stopResult = [NSString stringWithFormat:@"%@", [results stringForColumn:@"no"]];
+            [self.tableResults addObject:stopResult];
+        }
+        [database close];
+
+        [self.tableView reloadData];
     }
 
 }
@@ -121,15 +130,19 @@
 
         cell.distanceAwayLabel.hidden = YES;
         cell.distanceAwayImage.hidden = YES;
+        
         [cellValue addObject:cell];
     } else {
         static NSString *busStopCellIdentifer = @"BusStopServiceSearchCell";
-        busStopCellView *cell = (busStopCellView *)[tableView dequeueReusableCellWithIdentifier:busStopCellIdentifer];
+        busStopServiceSearch *cell = (busStopServiceSearch *)[tableView dequeueReusableCellWithIdentifier:busStopCellIdentifer];
         if (cell == nil) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"busStopServiceSearch" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
         
+        cell.busStopServiceLabel.text = [self.tableResults objectAtIndex:indexPath.row];
+        
+        [cellValue addObject:cell];
     }
     
     
@@ -144,15 +157,31 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    busStopCellView *busStopCell;
+    busStopServiceSearch *busServiceCell;
+    
+    if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busStopCell class]]) {
+        [self performSegueWithIdentifier:@"busStopModal" sender:self];
+    }
+    
+    if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busServiceCell class]]) {
+        [self performSegueWithIdentifier:@"busRouteModal" sender:self];
+    }
+}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
+        RouteViewController *vc = [segue destinationViewController];
+    }
 }
-*/
+
 
 @end

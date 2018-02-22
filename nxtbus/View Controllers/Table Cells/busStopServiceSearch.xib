@@ -29,13 +29,13 @@
                         <rect key="frame" x="16" y="4" width="6" height="90"/>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.37647058823529411" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="nzK-V6-bTb" secondAttribute="height" multiplier="1:15" id="108-N3-GeR"/>
+                            <constraint firstAttribute="width" secondItem="nzK-V6-bTb" secondAttribute="height" multiplier="1:15" id="Bld-2d-blf"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="995B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWJ-AE-KzI">
-                        <rect key="frame" x="30" y="27" width="103" height="45"/>
+                        <rect key="frame" x="30" y="27" width="196" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="103" id="oXR-fb-io8"/>
+                            <constraint firstAttribute="width" constant="196" id="ZlM-Rt-lX9"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="45"/>
                         <nil key="textColor"/>
@@ -43,17 +43,16 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="DWJ-AE-KzI" secondAttribute="centerY" id="6YE-8o-vfB"/>
-                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="nzK-V6-bTb" secondAttribute="trailing" constant="8" symbolic="YES" id="GYb-34-B2N"/>
-                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="16" id="Xon-hx-sM3"/>
-                    <constraint firstItem="nzK-V6-bTb" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="-7" id="aMJ-Rn-BwD"/>
-                    <constraint firstItem="nzK-V6-bTb" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leadingMargin" id="nVX-lq-hud"/>
-                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leading" constant="30" id="szU-zv-iK5"/>
-                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="YMr-3p-Yy4" secondAttribute="centerY" id="xXH-7m-cBG"/>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="16" id="Aj7-P8-BKZ"/>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leading" constant="30" id="RUF-Mi-kTM"/>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="nzK-V6-bTb" secondAttribute="trailing" constant="8" symbolic="YES" id="k3b-nM-MEG"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="-7" id="leN-Lv-FUp"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="DWJ-AE-KzI" secondAttribute="centerY" id="mL5-rQ-089"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leadingMargin" id="nf0-ZL-H4v"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="YMr-3p-Yy4" secondAttribute="centerY" id="rBB-Q7-GsK"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="busServiceLabel" destination="DWJ-AE-KzI" id="lam-Md-fVP"/>
                 <outlet property="busStopServiceLabel" destination="DWJ-AE-KzI" id="iAl-Cc-8VR"/>
             </connections>
             <point key="canvasLocation" x="-32.5" y="-26"/>
