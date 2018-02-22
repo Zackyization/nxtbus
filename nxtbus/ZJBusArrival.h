@@ -46,12 +46,7 @@
 //Bus stop name
 -(NSString *)getBusStopName:(NSString *)busStopID;
 
-//Bus stop location
-//-(CLLocation *)getBusStopLocationFromDB:(NSString *)busStopID; //RECONSIDER
-
 //Nearby train stations
-    //Compare bus stop location with every train station coordinate in train_stations
-    //If distanceFrom is less than 100m, show the train ID
 -(NSArray *)getTrainStationsNearbyBusStop:(NSString *)busStopID;
 
 //Add bus route to map

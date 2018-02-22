@@ -30,7 +30,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-V6-bTb">
                         <rect key="frame" x="16" y="4" width="6" height="90"/>
-                        <color key="backgroundColor" red="0.91764705882352937" green="0.37647058823529411" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nzK-V6-bTb" secondAttribute="height" multiplier="1:15" id="Es1-cA-7Z3"/>
                         </constraints>
@@ -53,7 +53,7 @@
                             <constraint firstAttribute="width" constant="290" id="3P5-Gk-lc2"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="16"/>
-                        <color key="textColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Wm1-hC-xx7">
@@ -98,6 +98,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="distanceAwayImage" destination="pTk-AB-bc7" id="WHh-tF-gz3"/>
                 <outlet property="distanceAwayLabel" destination="fwv-17-mJp" id="dV4-nP-gdw"/>
                 <outlet property="stopIDLabel" destination="ZVq-58-EEp" id="cE6-0w-iI6"/>
                 <outlet property="stopNameLabel" destination="DWJ-AE-KzI" id="ZHY-lY-Hwh"/>

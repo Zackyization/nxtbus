@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *stopIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stopServicesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceAwayLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *distanceAwayImage;
 
 @end

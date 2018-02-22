@@ -53,7 +53,7 @@
                                     <segment title="Bus Stops"/>
                                     <segment title="Bus Services"/>
                                 </segments>
-                                <color key="tintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.45882352939999999" green="0.59607843140000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,19 +73,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jox-8x-ne7">
-                                <rect key="frame" x="0.0" y="172" width="375" height="446"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for a Bus Stop/Service" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-R1-tXD">
                                 <rect key="frame" x="0.0" y="116" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="GoP-lb-IlI" id="WDO-iT-IK5"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OVq-1i-S1w">
+                                <rect key="frame" x="16" y="179" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Bus Stops"/>
+                                    <segment title="Bus Services"/>
+                                </segments>
+                                <color key="tintColor" red="0.45882352939999999" green="0.59607843140000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentControlAction:" destination="GoP-lb-IlI" eventType="valueChanged" id="fG4-rT-oer"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jox-8x-ne7">
+                                <rect key="frame" x="0.0" y="215" width="375" height="403"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GoP-lb-IlI" id="kQD-3U-xYy"/>
+                                    <outlet property="delegate" destination="GoP-lb-IlI" id="1sf-g1-smf"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="A1o-kS-Fz6"/>
@@ -93,7 +109,10 @@
                     <navigationItem key="navigationItem" title="Search" id="rZc-a6-pDG"/>
                     <connections>
                         <outlet property="searchBar" destination="VEI-R1-tXD" id="Ka8-TW-3nd"/>
-                        <outlet property="tableView" destination="Jox-8x-ne7" id="wzF-34-3YY"/>
+                        <outlet property="segmentedControl" destination="OVq-1i-S1w" id="Aif-XM-0Oh"/>
+                        <outlet property="tableView" destination="Jox-8x-ne7" id="JmM-MU-kVa"/>
+                        <segue destination="2qr-J8-C3E" kind="presentation" id="Sn0-z4-MqG"/>
+                        <segue destination="PfX-vg-fdN" kind="presentation" id="BoA-WK-kCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQb-aH-Iyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="0.91764705879999997" green="0.37647058820000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.36078431372549019" green="0.41176470588235292" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="dwQ-p6-qIO" kind="relationship" relationship="viewControllers" id="ZNU-9e-J7Q"/>
@@ -325,11 +344,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-ol-Cgs">
-                                <rect key="frame" x="16" y="132" width="343" height="1"/>
+                                <rect key="frame" x="16" y="36" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="0.20743257709999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="201299" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-BZ-Vgw">
-                                <rect key="frame" x="128" y="122" width="119" height="21"/>
+                                <rect key="frame" x="128" y="26" width="119" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7HM-H2-pSp"/>
@@ -339,7 +358,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUF-vD-usr">
-                                <rect key="frame" x="0.0" y="145" width="375" height="473"/>
+                                <rect key="frame" x="0.0" y="49" width="375" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                                 <connections>
@@ -381,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCM-no-YTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2781.5999999999999" y="-1327.2863568215894"/>
+            <point key="canvasLocation" x="4057" y="-920"/>
         </scene>
         <!--Route View Controller-->
         <scene sceneID="v0x-2R-H0R">
@@ -474,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnV-9h-SZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4520.8000000000002" y="-318.89055472263868"/>
+            <point key="canvasLocation" x="4057" y="-63"/>
         </scene>
         <!--Scan-->
         <scene sceneID="6Ik-DO-vND">
@@ -511,4 +530,8 @@
         <image name="nearbyTab" width="25" height="25"/>
         <image name="scanTab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wf3-W6-dE8"/>
+        <segue reference="BoA-WK-kCR"/>
+    </inferredMetricsTieBreakers>
 </document>

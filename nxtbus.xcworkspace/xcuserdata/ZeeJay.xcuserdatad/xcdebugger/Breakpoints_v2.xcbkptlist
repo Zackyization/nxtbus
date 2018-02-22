@@ -61,7 +61,7 @@
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.940653"
+            timestampString = "540999828.5274169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "266"
@@ -77,7 +77,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.941354"
+            timestampString = "540999828.528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
@@ -94,7 +94,7 @@
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.941687"
+            timestampString = "540999828.528231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
@@ -111,7 +111,7 @@
             condition = "[position isEqualToString:@&quot;next3&quot;];"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.941915"
+            timestampString = "540999828.528451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "273"
@@ -127,7 +127,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/View Controllers/RouteViewController.m"
-            timestampString = "540929857.9421149"
+            timestampString = "540933740.38713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -143,7 +143,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.942567"
+            timestampString = "540999828.5287139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
@@ -159,12 +159,62 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nxtbus/ZJBusArrival.m"
-            timestampString = "540929857.942754"
+            timestampString = "540999828.528946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
             landmarkName = "-getTrainStationsNearbyBusStop:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            condition = "[searchText length] &gt; 3"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/SearchViewController.m"
+            timestampString = "540999828.529168"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-searchBar:textDidChange:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/View Controllers/SearchViewController.m"
+            timestampString = "540999828.529628"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            condition = "[busStopID isEqualToString:@&quot;10371&quot;]"
+            continueAfterRunningActions = "No"
+            filePath = "nxtbus/ZJBusArrival.m"
+            timestampString = "540999828.529899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-getBusStopName:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
