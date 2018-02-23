@@ -15,6 +15,7 @@
 @property (nonatomic) int passedCount;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *centerCurrentLocationButton;
 
 @end
 
@@ -22,9 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ Route", self.busService];
     
     self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:self.busArrive.direction];
+    if ([self.routeStops count] == 0) {
+        self.busArrive = [[ZJBusArrival alloc] init];
+        self.routeStops = [self.busArrive getBusRouteStopsOf:self.busService direction:1];
+        self.centerCurrentLocationButton.hidden = YES;
+    }
+    
     for (int i = 0; i < [self.routeStops count]; i++) {
         if ([self.currentBusStopID isEqualToString:[self.routeStops objectAtIndex:i]]) {
             self.passedCount = i;
@@ -60,7 +68,11 @@
         }
     }
     
-    [self centerOnCurrentBusStop:nil];
+    if (self.currentBusStopID) {
+        [self centerOnCurrentBusStop:nil];
+    } else {
+        [self centerOnBusStop:[self.routeStops objectAtIndex:0]];
+    }
 }
 
 -(void)reloadData {

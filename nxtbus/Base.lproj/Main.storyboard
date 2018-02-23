@@ -486,6 +486,7 @@
                         <viewLayoutGuide key="safeArea" id="0er-kZ-bIe"/>
                     </view>
                     <connections>
+                        <outlet property="centerCurrentLocationButton" destination="xGU-wx-oXS" id="Lto-8W-O0A"/>
                         <outlet property="mapView" destination="0dL-3J-gQC" id="syq-rQ-SPO"/>
                         <outlet property="navigationBar" destination="CFS-83-AH5" id="eva-Ab-vDW"/>
                         <outlet property="tableView" destination="ljT-EA-J78" id="mqn-U7-7ZV"/>

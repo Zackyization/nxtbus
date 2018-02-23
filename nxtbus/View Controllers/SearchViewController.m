@@ -158,18 +158,23 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    busStopCellView *busStopCell;
-    busStopServiceSearch *busServiceCell;
+    busStopCellView *busStopCell = [[busStopCellView alloc] init];
+    busStopServiceSearch *busServiceCell = [[busStopServiceSearch alloc] init];
     
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busStopCell class]]) {
         [self performSegueWithIdentifier:@"busStopModal" sender:self];
     }
     
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busServiceCell class]]) {
+        busServiceCell = [tableView cellForRowAtIndexPath:indexPath];
+        self.busStopServiceVal = busServiceCell.busStopServiceLabel.text;
         [self performSegueWithIdentifier:@"busRouteModal" sender:self];
     }
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.searchBar resignFirstResponder];
+}
 
 #pragma mark - Navigation
 
@@ -180,6 +185,7 @@
     
     if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
         RouteViewController *vc = [segue destinationViewController];
+        vc.busService = self.busStopServiceVal;
     }
 }
 

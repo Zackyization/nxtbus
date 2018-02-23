@@ -16,7 +16,6 @@
 @property (nonatomic) NSString *busService;
 @property (nonatomic) NSString *currentBusStopID;
 
-
 @property (nonatomic) ZJBusArrival *busArrive;
 
 
