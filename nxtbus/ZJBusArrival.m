@@ -55,6 +55,59 @@
     return finalArray;
 }
 
+-(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID {
+    NSString *busLat;
+    NSString *busLong;
+    
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT lat,lng FROM bus_stops WHERE no IN (?)";
+    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    if ([results next]) {
+        busLat = [NSString stringWithFormat:@"%@", [results stringForColumn:@"lat"]];
+        busLong = [NSString stringWithFormat:@"%@", [results stringForColumn:@"lng"]];
+    }
+    [database close];
+    
+    CLLocationCoordinate2D busStopLocation = CLLocationCoordinate2DMake([busLat doubleValue], [busLong doubleValue]);
+    
+    return busStopLocation;
+}
+
+-(int)getDistanceFromUserToBusStop:(NSString *)busStopID userLocation:(CLLocation *)location {
+    CLLocationCoordinate2D stopCoordinate = [self getBusStopLocationOfBusStopID:busStopID];
+    CLLocation *busStopLocation = [[CLLocation alloc] initWithLatitude:stopCoordinate.latitude longitude:stopCoordinate.longitude];
+    
+    int distance = [busStopLocation distanceFromLocation:location];
+    
+    return distance;
+}
+
+
+
+-(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
+    NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];
+    nearbyStopsArray = [self getNearbyBusStops:location];
+    
+    for (ZJBusArrival *bus in nearbyStopsArray) {
+        MKPointAnnotation *busPoint = [[MKPointAnnotation alloc] init];
+        busPoint.coordinate = bus.busStopLocation.coordinate;
+        busPoint.title = bus.busStopName;
+        busPoint.subtitle = bus.busStopID;
+        
+        [map addAnnotation:busPoint];
+    }
+}
+
 -(NSDictionary *)getBusStopServicesFromBusStopID:(NSString *)busStopID {
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://arrivelah.herokuapp.com/?id=%@", busStopID];
@@ -109,19 +162,6 @@
     return result;
 }
 
--(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
-    NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];
-    nearbyStopsArray = [self getNearbyBusStops:location];
-    
-    for (ZJBusArrival *bus in nearbyStopsArray) {
-        MKPointAnnotation *busPoint = [[MKPointAnnotation alloc] init];
-        busPoint.coordinate = bus.busStopLocation.coordinate;
-        busPoint.title = bus.busStopName;
-        busPoint.subtitle = bus.busStopID;
-        
-        [map addAnnotation:busPoint];
-    }
-}
 
 /* Bus Stop Route Info Methods */
 
@@ -197,7 +237,7 @@
         trainStationLocation = [[CLLocation alloc] initWithLatitude:[[trainCoordinateValues objectAtIndex:0] floatValue] longitude:[[trainCoordinateValues objectAtIndex:1] floatValue]];
         
         if ([busStopLocation distanceFromLocation:trainStationLocation] <= 150) {
-
+            
             [database open];
             NSString *sqlQuery = @"SELECT code FROM train_stations WHERE coordinates IN (?)";
             NSArray *values = [[NSArray alloc] initWithObjects:stationStringCoordinate, nil];
@@ -209,7 +249,7 @@
             if ([results next]) {
                 NSString *codes = [NSString stringWithFormat:@"%@", [results stringForColumn:@"code"]];
                 
-               trainStationCodes = [codes componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                trainStationCodes = [codes componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                 trainStationCodes = [trainStationCodes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];            }
             
             [database close];
@@ -222,44 +262,6 @@
 }
 
 
-
-
--(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID {
-    NSString *busLat;
-    NSString *busLong;
-    
-    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [paths objectAtIndex:0];
-    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
-    
-    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
-    
-    [database open];
-    NSString *sqlQuery = @"SELECT lat,lng FROM bus_stops WHERE no IN (?)";
-    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
-    NSError *error;
-    //Query Result
-    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
-    
-    if ([results next]) {
-        busLat = [NSString stringWithFormat:@"%@", [results stringForColumn:@"lat"]];
-        busLong = [NSString stringWithFormat:@"%@", [results stringForColumn:@"lng"]];
-    }
-    [database close];
-    
-    CLLocationCoordinate2D busStopLocation = CLLocationCoordinate2DMake([busLat doubleValue], [busLong doubleValue]);
-    
-    return busStopLocation;
-}
-
--(int)getDistanceFromUserToBusStop:(NSString *)busStopID userLocation:(CLLocation *)location {
-    CLLocationCoordinate2D stopCoordinate = [self getBusStopLocationOfBusStopID:busStopID];
-    CLLocation *busStopLocation = [[CLLocation alloc] initWithLatitude:stopCoordinate.latitude longitude:stopCoordinate.longitude];
-    
-    int distance = [busStopLocation distanceFromLocation:location];
-    
-    return distance;
-}
 
 
 -(NSArray *)getBusStopServiceNumbersFromBusStopID:(NSString *)busStopID {

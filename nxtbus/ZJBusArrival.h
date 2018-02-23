@@ -23,7 +23,6 @@
 @property (nonatomic) int busStopDistanceFromUser;
 
 @property NSString *busType; //SD for single deck, DD for double deck
-@property (nonatomic) BOOL busHandicap; //RECONSIDER
 @property (nonatomic) float nextTimeRemaining;
 @property (nonatomic) NSString *load; //SEA - non crowded, SDA - moderate, LSD - crowded
 
@@ -48,7 +47,6 @@
 //Nearby train stations
 -(NSArray *)getTrainStationsNearbyBusStop:(NSString *)busStopID;
 
-//Add bus route to map
 
 /* Bus info methods */
 //useAPI should be set to YES to get a direct feedback from the arrivelah API

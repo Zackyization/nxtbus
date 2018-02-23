@@ -111,7 +111,7 @@
         
     }
     
-    //Bus arrival methods have to use this class' NSDictionary busData to reduce lag
+    //Bus arrival methods use this class' NSDictionary busData to reduce lag
     //Get timing for next
     NSString *nextTimeRemaining;
     float timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
