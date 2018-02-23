@@ -26,17 +26,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-iH-r3k">
-                                <rect key="frame" x="164" y="565" width="51" height="31"/>
-                                <color key="onTintColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="163" y="532" width="51" height="31"/>
+                                <color key="onTintColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="toggleTorchLight:" destination="8sq-zC-Wou" eventType="valueChanged" id="jCf-Jy-eXp"/>
                                 </connections>
                             </switch>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlightIcon" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-Bl-ULQ">
+                                <rect key="frame" x="175" y="571" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="L7E-Bl-ULQ" secondAttribute="height" multiplier="1:1" id="5wQ-VT-lUw"/>
+                                    <constraint firstAttribute="height" constant="25" id="Stc-ws-Ugn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="e5d-iH-r3k" firstAttribute="top" secondItem="qs2-aN-PKb" secondAttribute="top" constant="449" id="QJx-E8-BEX"/>
-                            <constraint firstItem="e5d-iH-r3k" firstAttribute="leading" secondItem="qs2-aN-PKb" secondAttribute="leading" constant="164" id="yN7-Xw-OXD"/>
+                            <constraint firstItem="e5d-iH-r3k" firstAttribute="top" secondItem="qs2-aN-PKb" secondAttribute="top" constant="416" id="3Dn-4Q-AZT"/>
+                            <constraint firstItem="e5d-iH-r3k" firstAttribute="centerX" secondItem="BBt-1U-gaY" secondAttribute="centerX" id="8jz-y2-se4"/>
+                            <constraint firstItem="L7E-Bl-ULQ" firstAttribute="leading" secondItem="qs2-aN-PKb" secondAttribute="leading" constant="175" id="QuV-ce-FFF"/>
+                            <constraint firstItem="L7E-Bl-ULQ" firstAttribute="top" secondItem="e5d-iH-r3k" secondAttribute="bottom" constant="8" symbolic="YES" id="VL1-gE-diI"/>
+                            <constraint firstItem="e5d-iH-r3k" firstAttribute="centerX" secondItem="L7E-Bl-ULQ" secondAttribute="centerX" id="gPC-nX-5Rg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qs2-aN-PKb"/>
                     </view>
@@ -44,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFf-pl-3VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1837.5999999999999" y="959.37031484257875"/>
+            <point key="canvasLocation" x="1838" y="960"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="nWU-fZ-dru">
@@ -236,7 +246,6 @@
                         <barButtonItem key="backBarButtonItem" title="Nearby Bus Stops" id="wkG-A7-vye"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="mjd-OF-0s7">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="90" maxX="0.0" maxY="90"/>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="refreshButton:" destination="5CM-vM-dGL" id="0Ud-OL-B1L"/>
                             </connections>
@@ -286,14 +295,14 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="30"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -592,11 +601,12 @@
     <resources>
         <image name="compassOff" width="45" height="45"/>
         <image name="currentLocation" width="45" height="45"/>
+        <image name="flashlightIcon" width="20" height="20"/>
         <image name="nearbyTab" width="25" height="25"/>
         <image name="scanTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Wf3-W6-dE8"/>
-        <segue reference="BoA-WK-kCR"/>
+        <segue reference="u1e-aV-KpI"/>
     </inferredMetricsTieBreakers>
 </document>

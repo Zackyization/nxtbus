@@ -74,6 +74,9 @@ AVCaptureSession *session;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.qrVC stopScanning];
+    
+    [self.flashLight setTorchMode:AVCaptureTorchModeOff];
+    [self.flashLight unlockForConfiguration];
 }
 
 #pragma mark - Actions
