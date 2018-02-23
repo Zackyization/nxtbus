@@ -28,7 +28,7 @@
 
 @property (nonatomic) NSString *busStopIDVal;
 @property (nonatomic) NSString *busStopServiceVal;
-
+@property (nonatomic) NSString *busStopTitleVal;
 
 @end
 
@@ -162,12 +162,17 @@
     busStopServiceSearch *busServiceCell = [[busStopServiceSearch alloc] init];
     
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busStopCell class]]) {
+        busStopCell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        self.busStopIDVal = busStopCell.stopIDLabel.text;
+        self.busStopTitleVal = busStopCell.stopNameLabel.text;
         [self performSegueWithIdentifier:@"busStopModal" sender:self];
     }
     
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[busServiceCell class]]) {
         busServiceCell = [tableView cellForRowAtIndexPath:indexPath];
         self.busStopServiceVal = busServiceCell.busStopServiceLabel.text;
+        
         [self performSegueWithIdentifier:@"busRouteModal" sender:self];
     }
 }
@@ -182,6 +187,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"busStopModal"]) {
+        BusStopViewController *vc = [segue destinationViewController];
+        vc.busStopTitle = self.busStopTitleVal;
+        vc.busStopID = self.busStopIDVal;
+        [vc.busStopIDLabel setText:self.busStopIDVal];
+    }
     
     if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
         RouteViewController *vc = [segue destinationViewController];

@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
 @property (nonatomic) NSString *busServiceVal;
 @property (nonatomic) NSString *busStopIDval;
 @property (nonatomic) ZJBusArrival *busArriveVal;
@@ -35,6 +36,8 @@
     self.busServices = [[NSArray alloc] init];
     self.busStopIDLabel.text = self.busStopID;
     
+    [self.modalNavigationBar.topItem setTitle:self.busStopTitle];
+
     self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
     self.busServices = [self.busArrival getLiveBusStopServiceNumbersFromBusStopID:self.busStopID fromData:self.busData useAPI:NO];
     
@@ -56,11 +59,14 @@
 }
 
 
+- (IBAction)closeModal:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)refreshButton:(id)sender {
     self.busData = [self.busArrival getBusStopServicesFromBusStopID:self.busStopID];
     self.busServices = [self.busArrival getLiveBusStopServiceNumbersFromBusStopID:self.busStopID fromData:self.busData useAPI:NO];
-
+    
     //when no data is received from api
     if (!_busServices || _busServices.count == 0) {
         self.busServices = [self.busArrival getBusStopServiceNumbersFromBusStopID:self.busStopID];
@@ -114,7 +120,7 @@
                                                          fromData:self.busData
                                                            useAPI:NO
                                                         direction:cell.busArrive.direction];
-
+    
     if (floorf(timeRemaining) <= -2) {
         nextTimeRemaining = @"-";
         cell.nextTimeRemainingLabel.textColor = [UIColor lightGrayColor];
@@ -133,33 +139,33 @@
         [cell.nextTimeRemainingLabel setTextColor:[UIColor blackColor]];
         cell.nextMinsLabel.hidden = NO;
     }
-
+    
     cell.nextTimeRemainingLabel.text = nextTimeRemaining;
     
-        //Get timing for subsequent
-        NSString *subsequentTimeRemaining;
-        timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
+    //Get timing for subsequent
+    NSString *subsequentTimeRemaining;
+    timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
                                                 busPosition:@"subsequent"
                                               fromBusStopID:cell.busArrive.busStopID
                                                    fromData:self.busData
                                                      useAPI:NO
                                                   direction:cell.busArrive.direction];
     
-        if (floorf(timeRemaining) <= -2) {
-            cell.subsequentMinsLabel.hidden = YES;
-            cell.subsequentTimeRemainingLabel.hidden = YES;
-        } else if (floorf(timeRemaining) == 1) {
-            cell.subsequentMinsLabel.text = @"min";
-            subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-        } else if (floorf(timeRemaining) <= 0) {
-            subsequentTimeRemaining = @"Arr";
-            cell.subsequentMinsLabel.hidden = YES;
-        } else {
-            subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
-        }
+    if (floorf(timeRemaining) <= -2) {
+        cell.subsequentMinsLabel.hidden = YES;
+        cell.subsequentTimeRemainingLabel.hidden = YES;
+    } else if (floorf(timeRemaining) == 1) {
+        cell.subsequentMinsLabel.text = @"min";
+        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    } else if (floorf(timeRemaining) <= 0) {
+        subsequentTimeRemaining = @"Arr";
+        cell.subsequentMinsLabel.hidden = YES;
+    } else {
+        subsequentTimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
+    }
     
-
-//    Get timing for next3
+    
+    //    Get timing for next3
     NSString *next3TimeRemaining;
     timeRemaining = [self.busArrival getBusTimeRemainingFor:cell.busArrive.busNumber
                                                 busPosition:@"next3"
@@ -167,7 +173,7 @@
                                                    fromData:self.busData
                                                      useAPI:NO
                                                   direction:cell.busArrive.direction];
-
+    
     if (floorf(timeRemaining) <= -2) {
         cell.next3MinsLabel.hidden = YES;
         cell.next3TimeRemainingLabel.hidden = YES;
@@ -180,9 +186,9 @@
     } else {
         next3TimeRemaining = [NSString stringWithFormat:@"%.0f", floorf(timeRemaining)];
     }
-
+    
     cell.next3TimeRemainingLabel.text = next3TimeRemaining;
-
+    
     //Get bus load
     NSString *busLoad = [self.busArrival getBusLoadFor:cell.busArrive.busNumber
                                            busPosition:@"next"
@@ -259,19 +265,19 @@
 
 
 
- #pragma mark - Navigation
- 
+#pragma mark - Navigation
+
 //  In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//  Get the new view controller using [segue destinationViewController].
-//  Pass the selected object to the new view controller.
-     if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
-         RouteViewController *vc = [segue destinationViewController];
-         vc.busService = self.busServiceVal;
-         vc.busArrive = self.busArriveVal;
-         vc.currentBusStopID = self.busStopIDval;
-     }
- }
- 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //  Get the new view controller using [segue destinationViewController].
+    //  Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"busRouteModal"]) {
+        RouteViewController *vc = [segue destinationViewController];
+        vc.busService = self.busServiceVal;
+        vc.busArrive = self.busArriveVal;
+        vc.currentBusStopID = self.busStopIDval;
+    }
+}
+
 
 @end

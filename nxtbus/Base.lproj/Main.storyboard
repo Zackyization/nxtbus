@@ -343,22 +343,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-ol-Cgs">
-                                <rect key="frame" x="16" y="36" width="343" height="1"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPi-Nn-3VH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wi9-3m-1Es">
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="000" id="igY-kd-Qhx">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="AOt-2N-Xj5">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="closeModal:" destination="PfX-vg-fdN" id="1Ac-oM-Cm5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-ol-Cgs">
+                                <rect key="frame" x="16" y="82" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="0.20743257709999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="201299" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-BZ-Vgw">
-                                <rect key="frame" x="128" y="26" width="119" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="201299" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-BZ-Vgw">
+                                <rect key="frame" x="128" y="72" width="119" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="7HM-H2-pSp"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="16"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUF-vD-usr">
-                                <rect key="frame" x="0.0" y="49" width="375" height="569"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUF-vD-usr">
+                                <rect key="frame" x="0.0" y="101" width="375" height="517"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                                 <connections>
@@ -368,19 +392,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="UFi-BZ-Vgw" firstAttribute="centerX" secondItem="v4b-ol-Cgs" secondAttribute="centerX" id="9uq-xg-vE4"/>
-                            <constraint firstItem="v4b-ol-Cgs" firstAttribute="centerY" secondItem="UFi-BZ-Vgw" secondAttribute="centerY" id="C5X-2Q-BIs"/>
-                            <constraint firstItem="WUF-vD-usr" firstAttribute="leading" secondItem="dgC-bB-5sf" secondAttribute="leading" id="TKT-8S-rCk"/>
-                            <constraint firstItem="v4b-ol-Cgs" firstAttribute="leading" secondItem="dgC-bB-5sf" secondAttribute="leadingMargin" id="TZb-h1-mnq"/>
-                            <constraint firstItem="WUF-vD-usr" firstAttribute="top" secondItem="UFi-BZ-Vgw" secondAttribute="bottom" constant="2" id="Tgh-U5-9rg"/>
-                            <constraint firstItem="UFi-BZ-Vgw" firstAttribute="top" secondItem="6an-N2-oje" secondAttribute="top" constant="6" id="Xs7-mn-PyJ"/>
-                            <constraint firstItem="WUF-vD-usr" firstAttribute="bottom" secondItem="6an-N2-oje" secondAttribute="bottom" id="cgW-jH-GNg"/>
-                            <constraint firstItem="v4b-ol-Cgs" firstAttribute="centerX" secondItem="WUF-vD-usr" secondAttribute="centerX" id="hIR-tq-K7A"/>
-                            <constraint firstItem="UFi-BZ-Vgw" firstAttribute="leading" secondItem="6an-N2-oje" secondAttribute="leading" constant="128" id="hcN-LO-Jx1"/>
-                            <constraint firstItem="v4b-ol-Cgs" firstAttribute="top" secondItem="6an-N2-oje" secondAttribute="top" constant="16" id="ob5-KZ-bqU"/>
-                            <constraint firstAttribute="trailing" secondItem="WUF-vD-usr" secondAttribute="trailing" id="piB-8o-WoG"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6an-N2-oje"/>
                     </view>
                     <toolbarItems/>
@@ -394,13 +405,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="busStopIDLabel" destination="UFi-BZ-Vgw" id="SWB-sI-AOG"/>
+                        <outlet property="modalNavigationBar" destination="wi9-3m-1Es" id="pi5-VY-Pda"/>
                         <outlet property="tableView" destination="WUF-vD-usr" id="jxG-B4-LzD"/>
                         <segue destination="2qr-J8-C3E" kind="presentation" identifier="busRouteModal" id="Wf3-W6-dE8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCM-no-YTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4057" y="-920"/>
+            <point key="canvasLocation" x="4056.8000000000002" y="-920.68965517241384"/>
         </scene>
         <!--Route View Controller-->
         <scene sceneID="v0x-2R-H0R">
@@ -532,7 +544,7 @@
         <image name="scanTab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sn0-z4-MqG"/>
+        <segue reference="Wf3-W6-dE8"/>
         <segue reference="BoA-WK-kCR"/>
     </inferredMetricsTieBreakers>
 </document>
