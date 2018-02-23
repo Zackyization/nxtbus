@@ -1,0 +1,6 @@
+framework module Pods_nxtbusUITests {
+  umbrella header "Pods-nxtbusUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

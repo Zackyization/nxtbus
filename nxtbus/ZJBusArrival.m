@@ -59,7 +59,16 @@
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://arrivelah.herokuapp.com/?id=%@", busStopID];
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];
-    NSDictionary *services = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    NSDictionary *services;
+    
+    @try {
+        services = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+    } @catch (NSException *exception) {
+        return nil;
+    } @finally {
+        
+    }
     
     NSArray *busNumbers = [[services objectForKey:@"services"] valueForKey:@"no"];
     if (!busNumbers || !busNumbers.count) {
@@ -100,7 +109,6 @@
     return result;
 }
 
-
 -(void)addBusStopAnnotationsToMap:(MKMapView *)map fromUserLocation:(CLLocation *)location {
     NSMutableArray *nearbyStopsArray = [[NSMutableArray alloc] init];
     nearbyStopsArray = [self getNearbyBusStops:location];
@@ -114,6 +122,107 @@
         [map addAnnotation:busPoint];
     }
 }
+
+/* Bus Stop Route Info Methods */
+
+
+-(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal {
+    NSError *error;
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@", busNumber] ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSDictionary *busRouteDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    
+    NSArray *arrayOfStops;
+    arrayOfStops = [busRouteDictionary valueForKeyPath:[NSString stringWithFormat:@"%i.stops", directionVal]];
+    
+    return arrayOfStops;
+}
+
+-(NSString *)getBusStopName:(NSString *)busStopID {
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no = ?";
+    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    NSString *busStopName;
+    if ([results next]) {
+        busStopName = [NSString stringWithFormat:@"%@", [results stringForColumn:@"name"]];
+    }
+    
+    [database close];
+    
+    return busStopName;
+}
+
+-(NSArray *)getTrainStationsNearbyBusStop:(NSString *)busStopID {
+    //get bus stop location
+    CLLocationCoordinate2D busStopCoordinates = [self getBusStopLocationOfBusStopID:busStopID];
+    CLLocation *busStopLocation = [[CLLocation alloc] initWithLatitude:busStopCoordinates.latitude longitude:busStopCoordinates.longitude];
+    
+    //get train station location
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT coordinates FROM train_stations";
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:nil error:&error];
+    
+    NSMutableArray *trainStations = [[NSMutableArray alloc] init];
+    NSString *coordinate;
+    while ([results next]) {
+        coordinate = [NSString stringWithFormat:@"%@", [results stringForColumn:@"coordinates"]];
+        [trainStations addObject:coordinate];
+    }
+    
+    [database close];
+    
+    CLLocation *trainStationLocation;
+    for (int i = 0; i < [trainStations count]; i++) {
+        NSString *stationStringCoordinate = [trainStations objectAtIndex:i];
+        NSArray *trainCoordinateValues = [stationStringCoordinate componentsSeparatedByString:@","];
+        trainStationLocation = [[CLLocation alloc] initWithLatitude:[[trainCoordinateValues objectAtIndex:0] floatValue] longitude:[[trainCoordinateValues objectAtIndex:1] floatValue]];
+        
+        if ([busStopLocation distanceFromLocation:trainStationLocation] <= 150) {
+
+            [database open];
+            NSString *sqlQuery = @"SELECT code FROM train_stations WHERE coordinates IN (?)";
+            NSArray *values = [[NSArray alloc] initWithObjects:stationStringCoordinate, nil];
+            NSError *error;
+            //Query Result
+            FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+            
+            NSArray *trainStationCodes;
+            if ([results next]) {
+                NSString *codes = [NSString stringWithFormat:@"%@", [results stringForColumn:@"code"]];
+                
+               trainStationCodes = [codes componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                trainStationCodes = [trainStationCodes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];            }
+            
+            [database close];
+            
+            return trainStationCodes;
+        }
+    }
+    
+    return nil;
+}
+
+
+
 
 -(CLLocationCoordinate2D)getBusStopLocationOfBusStopID:(NSString *)busStopID {
     NSString *busLat;
@@ -322,5 +431,34 @@
     
     return busStopName;
 }
+
+-(BOOL)checkIfFavorite:(NSString *)busStopID {
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT * FROM favorite_bus_info WHERE busStopID IN (?)";
+    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    NSString *foundStopID;
+    if ([results next]) {
+        foundStopID = [NSString stringWithFormat:@"%@", [results stringForColumn:@"busStopID"]];
+    }
+    
+    [database close];
+    
+    if (foundStopID) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 
 @end

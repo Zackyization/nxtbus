@@ -39,15 +39,12 @@
     [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
     
-    self.mapView.delegate = self;
-    self.mapView.showsUserLocation = YES;
-    
     _busArrive = [[ZJBusArrival alloc] init];
-
+    
     [_busArrive addBusStopAnnotationsToMap:self.mapView fromUserLocation:self.locationManager.location];
     _nearbyBusStops = [[NSMutableArray alloc] init];
     _nearbyBusStops = [_busArrive getNearbyBusStops:self.locationManager.location];
- 
+    
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.tintColor = [UIColor whiteColor];
@@ -55,6 +52,7 @@
     
     self.tableView.refreshControl = refresh;
 }
+
 -(void)viewDidAppear:(BOOL)animated {
     [self centerUserLocation:nil];
     _nearbyBusStops = [_busArrive getNearbyBusStops:self.locationManager.location];
@@ -77,7 +75,7 @@
     if ( userLocation != nil ) {
         [pins removeObject:userLocation]; // avoid removing user location off the map
     }
-
+    
     [self.mapView removeAnnotations:pins];
     pins = nil;
 }
@@ -130,7 +128,7 @@
     }];
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     self.mapView.camera.heading = newHeading.magneticHeading;
     [self.mapView setCamera:self.mapView.camera animated:YES];
 }
@@ -159,13 +157,21 @@
             [busServices appendString:[NSString stringWithFormat:@"%@, ", [b objectAtIndex:i]]];
         }
     }
-
+    
     cell.stopServicesLabel.text = busServices;
     
     //get distance
     NSString *distance = [NSString stringWithFormat:@"%im", [_busArrive getDistanceFromUserToBusStop:_busArrive.busStopID userLocation:self.locationManager.location]];
     cell.distanceAwayLabel.text = distance;
-
+    
+    //favorite
+    cell.favorite = [self.busArrive checkIfFavorite:cell.stopIDLabel.text];
+    if (cell.favorite) {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOn"] forState:UIControlStateNormal];
+    } else {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOff"] forState:UIControlStateNormal];
+    }
+    
     return cell;
 }
 
@@ -182,18 +188,18 @@
 }
 
 
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
-     
-     if ([[segue identifier] isEqualToString:@"busStopSegue"]) {
-         BusStopViewController *vc = [segue destinationViewController];
-         vc.navigationItem.title = self.busStopTitleValue;
-         vc.busStopID = self.busStopIDValue;
-         [vc.busStopIDLabel setText:self.busStopIDValue];
-     }
- }
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"busStopSegue"]) {
+        BusStopViewController *vc = [segue destinationViewController];
+        vc.navigationItem.title = self.busStopTitleValue;
+        vc.busStopID = self.busStopIDValue;
+        [vc.busStopIDLabel setText:self.busStopIDValue];
+    }
+}
 @end

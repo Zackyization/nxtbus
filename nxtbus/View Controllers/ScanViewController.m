@@ -13,6 +13,7 @@
 @interface ScanViewController () <QRCodeReaderDelegate>
 
 @property (nonatomic, strong) QRCodeReaderViewController *qrVC;
+@property AVCaptureDevice *flashLight;
 
 @end
 
@@ -22,6 +23,8 @@ AVCaptureSession *session;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.flashLight = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
     
     QRCodeReaderViewControllerBuilder *builder = [[QRCodeReaderViewControllerBuilder alloc] init];
     QRCodeReaderView *readerView = (QRCodeReaderView *)builder.readerView;
@@ -76,6 +79,18 @@ AVCaptureSession *session;
 #pragma mark - Actions
 - (IBAction)torchButtonPressed:(id)sender {
     [self.qrVC.codeReader toggleTorch];
+}
+
+- (IBAction)toggleTorchLight:(UISwitch *)sender {
+    if ([sender isOn]) {
+        if([self.flashLight isTorchAvailable] && [self.flashLight isTorchModeSupported:AVCaptureTorchModeOff]) {
+            [self.flashLight setTorchMode:AVCaptureTorchModeOn];
+            [self.flashLight unlockForConfiguration];
+        } else {
+            [self.flashLight setTorchMode:AVCaptureTorchModeOff];
+            [self.flashLight unlockForConfiguration];
+        }
+    }
 }
 
 #pragma mark - QRCodeReaderViewControllerDelegate methods
