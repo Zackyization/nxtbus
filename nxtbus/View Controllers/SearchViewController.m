@@ -131,6 +131,14 @@
         cell.distanceAwayLabel.hidden = YES;
         cell.distanceAwayImage.hidden = YES;
         
+        //favorite
+        cell.favorite = [self.busArrive checkIfFavorite:cell.stopIDLabel.text];
+        if (cell.favorite) {
+            [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOn"] forState:UIControlStateNormal];
+        } else {
+            [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOff"] forState:UIControlStateNormal];
+        }
+        
         [cellValue addObject:cell];
     } else {
         static NSString *busStopCellIdentifer = @"BusStopServiceSearchCell";

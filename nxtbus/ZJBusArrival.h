@@ -39,7 +39,6 @@
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
 
 
-
 /* Bus Stop Route Info Methods */
 -(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal;
 
@@ -74,5 +73,7 @@
 //routeName
 -(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)directionVal;
 
+//favorite
+-(BOOL)checkIfFavorite:(NSString *)busStopID;
 
 @end

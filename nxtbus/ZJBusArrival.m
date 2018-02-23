@@ -59,7 +59,7 @@
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://arrivelah.herokuapp.com/?id=%@", busStopID];
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];
-    NSDictionary *services; //TODO: Handle exception when no connection
+    NSDictionary *services;
     
     @try {
         services = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
@@ -147,7 +147,7 @@
     FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
     
     [database open];
-    NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no IN (?)";
+    NSString *sqlQuery = @"SELECT name FROM bus_stops WHERE no = ?";
     NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
     NSError *error;
     //Query Result
@@ -431,5 +431,34 @@
     
     return busStopName;
 }
+
+-(BOOL)checkIfFavorite:(NSString *)busStopID {
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"BusDB.db"];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    
+    [database open];
+    NSString *sqlQuery = @"SELECT * FROM favorite_bus_info WHERE busStopID IN (?)";
+    NSArray *values = [[NSArray alloc] initWithObjects:busStopID, nil];
+    NSError *error;
+    //Query Result
+    FMResultSet *results = [database executeQuery:sqlQuery values:values error:&error];
+    
+    NSString *foundStopID;
+    if ([results next]) {
+        foundStopID = [NSString stringWithFormat:@"%@", [results stringForColumn:@"busStopID"]];
+    }
+    
+    [database close];
+    
+    if (foundStopID) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 
 @end

@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *stopServicesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceAwayLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceAwayImage;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+
+@property (nonatomic) BOOL favorite;
 
 @end

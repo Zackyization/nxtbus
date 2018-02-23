@@ -164,6 +164,14 @@
     NSString *distance = [NSString stringWithFormat:@"%im", [_busArrive getDistanceFromUserToBusStop:_busArrive.busStopID userLocation:self.locationManager.location]];
     cell.distanceAwayLabel.text = distance;
     
+    //favorite
+    cell.favorite = [self.busArrive checkIfFavorite:cell.stopIDLabel.text];
+    if (cell.favorite) {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOn"] forState:UIControlStateNormal];
+    } else {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favoriteOff"] forState:UIControlStateNormal];
+    }
+    
     return cell;
 }
 
