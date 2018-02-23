@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) QRCodeReaderViewController *qrVC;
 @property AVCaptureDevice *flashLight;
+@property (weak, nonatomic) IBOutlet UISwitch *flashlightSwitch;
 
 @end
 
@@ -77,6 +78,8 @@ AVCaptureSession *session;
     
     [self.flashLight setTorchMode:AVCaptureTorchModeOff];
     [self.flashLight unlockForConfiguration];
+    
+    [self.flashlightSwitch setOn:NO];
 }
 
 #pragma mark - Actions
