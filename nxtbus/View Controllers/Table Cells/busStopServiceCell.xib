@@ -103,11 +103,6 @@
                         <rect key="frame" x="82" y="46" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-n5-nF8">
-                        <rect key="frame" x="344" y="68" width="25" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="favoriteOff"/>
-                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -116,7 +111,6 @@
                 <outlet property="busRouteNameLabel" destination="SXb-Hx-gBd" id="1Zq-aj-vrZ"/>
                 <outlet property="busServiceLabel" destination="DWJ-AE-KzI" id="lam-Md-fVP"/>
                 <outlet property="busTypeIndicatorImage" destination="Se0-Us-LFD" id="vEv-Tm-N0I"/>
-                <outlet property="favouriteBusButton" destination="wBw-n5-nF8" id="NAj-KX-qjD"/>
                 <outlet property="next3MinsLabel" destination="PxE-7H-ySi" id="ame-n1-52R"/>
                 <outlet property="next3TimeRemainingLabel" destination="NN3-0q-eJ5" id="zJc-My-hcj"/>
                 <outlet property="nextMinsLabel" destination="a2b-le-9lD" id="Gb6-4X-wU2"/>
@@ -128,7 +122,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="favoriteOff" width="30" height="30"/>
         <image name="routeIcon" width="20" height="20"/>
         <image name="seatsAvailable" width="20" height="20"/>
         <image name="singleDeckBus" width="20" height="20"/>
