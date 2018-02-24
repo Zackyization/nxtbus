@@ -23,7 +23,6 @@
 @property (nonatomic) int busStopDistanceFromUser;
 
 @property NSString *busType; //SD for single deck, DD for double deck
-@property (nonatomic) BOOL busHandicap; //RECONSIDER
 @property (nonatomic) float nextTimeRemaining;
 @property (nonatomic) NSString *load; //SEA - non crowded, SDA - moderate, LSD - crowded
 
@@ -39,20 +38,15 @@
 -(NSArray *)getLiveBusStopServiceNumbersFromBusStopID:(NSString *)busStopID fromData:(NSDictionary *)dictionaryParam useAPI:(BOOL)option;
 
 
-
 /* Bus Stop Route Info Methods */
 -(NSArray *)getBusRouteStopsOf:(NSString *)busNumber direction:(int)directionVal;
 
 //Bus stop name
 -(NSString *)getBusStopName:(NSString *)busStopID;
 
-//Bus stop location
-
 //Nearby train stations
-    //Compare bus stop location with every train station coordinate in train_stations
-    //If distanceFrom is less than 100m, show the train ID
+-(NSArray *)getTrainStationsNearbyBusStop:(NSString *)busStopID;
 
-//Add bus route to map
 
 /* Bus info methods */
 //useAPI should be set to YES to get a direct feedback from the arrivelah API
@@ -77,5 +71,7 @@
 //routeName
 -(NSString *)getRoute:(NSString *)busNumber fromBusStopID:(NSString *)busStopID direction:(int)directionVal;
 
+//favorite
+-(BOOL)checkIfFavorite:(NSString *)busStopID;
 
 @end

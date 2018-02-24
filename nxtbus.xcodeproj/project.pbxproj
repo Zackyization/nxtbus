@@ -14,6 +14,9 @@
 		3D002E3D201A35ED001FC940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D002E3B201A35ED001FC940 /* LaunchScreen.storyboard */; };
 		3D002E40201A35ED001FC940 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E3F201A35ED001FC940 /* main.m */; };
 		3D002E4A201A35ED001FC940 /* nxtbusUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D002E49201A35ED001FC940 /* nxtbusUITests.m */; };
+		3D388A7C203F01770079E6F5 /* busStopServiceSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D388A7B203F01760079E6F5 /* busStopServiceSearch.xib */; };
+		3D388A7F203F01BF0079E6F5 /* busStopServiceSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D388A7E203F01BF0079E6F5 /* busStopServiceSearch.m */; };
+		3D388A82204013BE0079E6F5 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D388A81204013BE0079E6F5 /* FavoriteViewController.m */; };
 		3D42623E2035C40A007D4A4B /* 115.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D4260832035C409007D4A4B /* 115.json */; };
 		3D42623F2035C40A007D4A4B /* 400.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D4260842035C409007D4A4B /* 400.json */; };
 		3D4262402035C40A007D4A4B /* 284.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D4260852035C409007D4A4B /* 284.json */; };
@@ -509,6 +512,11 @@
 		3D002E45201A35ED001FC940 /* nxtbusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nxtbusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D002E49201A35ED001FC940 /* nxtbusUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nxtbusUITests.m; sourceTree = "<group>"; };
 		3D002E4B201A35ED001FC940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D388A7B203F01760079E6F5 /* busStopServiceSearch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = busStopServiceSearch.xib; sourceTree = "<group>"; };
+		3D388A7D203F01BF0079E6F5 /* busStopServiceSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = busStopServiceSearch.h; sourceTree = "<group>"; };
+		3D388A7E203F01BF0079E6F5 /* busStopServiceSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = busStopServiceSearch.m; sourceTree = "<group>"; };
+		3D388A80204013BE0079E6F5 /* FavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		3D388A81204013BE0079E6F5 /* FavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
 		3D4260832035C409007D4A4B /* 115.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 115.json; sourceTree = "<group>"; };
 		3D4260842035C409007D4A4B /* 400.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 400.json; sourceTree = "<group>"; };
 		3D4260852035C409007D4A4B /* 284.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 284.json; sourceTree = "<group>"; };
@@ -1525,6 +1533,9 @@
 				3D718770203C2ED0003369DF /* busRouteCell.m */,
 				3D71876D203C0D49003369DF /* busRouteCell.xib */,
 				3D556F49202F770B00BEB758 /* busStopCell.xib */,
+				3D388A7B203F01760079E6F5 /* busStopServiceSearch.xib */,
+				3D388A7D203F01BF0079E6F5 /* busStopServiceSearch.h */,
+				3D388A7E203F01BF0079E6F5 /* busStopServiceSearch.m */,
 				3DD6997C202A2FFE008DE259 /* busStopCellView.h */,
 				3DD6997D202A2FFE008DE259 /* busStopCellView.m */,
 				3DD6997A202A29E8008DE259 /* busStopServiceCell.xib */,
@@ -1579,6 +1590,8 @@
 				3D71876B203BAC5A003369DF /* RouteViewController.m */,
 				3D42640C20396B5F007D4A4B /* SearchViewController.h */,
 				3D42640D20396B5F007D4A4B /* SearchViewController.m */,
+				3D388A80204013BE0079E6F5 /* FavoriteViewController.h */,
+				3D388A81204013BE0079E6F5 /* FavoriteViewController.m */,
 				0A62A0F4203A72B40039AA90 /* ScanViewController.h */,
 				0A62A0F5203A72B40039AA90 /* ScanViewController.m */,
 				3D556F4E202F777300BEB758 /* Table Cells */,
@@ -1765,6 +1778,7 @@
 				3D5654602024E68A0095C20C /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				3D4262732035C40A007D4A4B /* 973.json in Resources */,
 				3D42631D2035C40A007D4A4B /* 69.json in Resources */,
+				3D388A7C203F01770079E6F5 /* busStopServiceSearch.xib in Resources */,
 				3D56545B2024E68A0095C20C /* RobotoCondensed-Italic.ttf in Resources */,
 				3D42633B2035C40A007D4A4B /* 255.json in Resources */,
 				3D42637B2035C40A007D4A4B /* 87.json in Resources */,
@@ -2267,6 +2281,7 @@
 				0A62A0F6203A72B40039AA90 /* ScanViewController.m in Sources */,
 				3D9C0FA4201B8EB8003CA991 /* ZJBusArrival.m in Sources */,
 				3D718771203C2ED0003369DF /* busRouteCell.m in Sources */,
+				3D388A7F203F01BF0079E6F5 /* busStopServiceSearch.m in Sources */,
 				3D556F48202F31B300BEB758 /* NearbyViewController.m in Sources */,
 				3D002E40201A35ED001FC940 /* main.m in Sources */,
 				3D002E32201A35ED001FC940 /* AppDelegate.m in Sources */,
@@ -2274,6 +2289,7 @@
 				3D42640E20396B5F007D4A4B /* SearchViewController.m in Sources */,
 				3D556F45202F2E9E00BEB758 /* BusStopViewController.m in Sources */,
 				3D71876C203BAC5A003369DF /* RouteViewController.m in Sources */,
+				3D388A82204013BE0079E6F5 /* FavoriteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2431,7 +2447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ite.nxtbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 			};
 			name = Debug;
@@ -2448,7 +2464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ite.nxtbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 			};
 			name = Release;
