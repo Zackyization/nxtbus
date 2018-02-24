@@ -27,7 +27,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-V6-bTb">
                         <rect key="frame" x="16" y="4" width="6" height="90"/>
-                        <color key="backgroundColor" red="0.91764705882352937" green="0.37647058823529411" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21224841480000001" green="0.57065624000000004" blue="0.94941866399999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nzK-V6-bTb" secondAttribute="height" multiplier="1:15" id="Bld-2d-blf"/>
                         </constraints>
