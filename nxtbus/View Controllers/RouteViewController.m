@@ -207,9 +207,9 @@
         return yellow;
     } else if ([station isEqualToString:@"DT"]) {
         return blue;
-    } else if ([station isEqualToString:@"BP"] || [station isEqualToString:@"STC"] ||
+    } else if ([station isEqualToString:@"BP"] || [station isEqualToString:@"ST"] ||
                [station isEqualToString:@"SE"] || [station isEqualToString:@"SW"] ||
-               [station isEqualToString:@"PTC"] || [station isEqualToString:@"PE"] || [station isEqualToString:@"PW"]) {
+               [station isEqualToString:@"PT"] || [station isEqualToString:@"PE"] || [station isEqualToString:@"PW"]) {
         return lrt;
     }
     
