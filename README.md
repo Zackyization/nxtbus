@@ -1,11 +1,11 @@
 
 # nxtbus
-nxtbus is an IOS App that displays bus information in Singapore to the user.
-Made as a student project for ITE College Central.
+nxtbus is an IOS App that displays bus information in Singapore to the user.  
+Made as a student project for ITE College Central.  
 Developed by Zildjian Garcia and Sean Nicholas.
 
 ### Disclaimer
-The static bus data used in this project is outdated.
+The static bus data used in this project is outdated.  
 Bus data is owned by the Land Transport Authority (LTA).
 
 # ZJBusArrival
