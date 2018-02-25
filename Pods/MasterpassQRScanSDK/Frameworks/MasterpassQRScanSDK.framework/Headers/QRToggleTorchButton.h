@@ -43,7 +43,6 @@
  * @note since 2.0.0
  */
 @property (nonatomic, strong) UIColor *edgeColor;
-
 /**
  * @note Abstract: The fill color of the drawing.
  * @note Discussion: The default color is the darkgray.

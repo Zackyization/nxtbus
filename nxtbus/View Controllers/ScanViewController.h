@@ -11,4 +11,6 @@
 
 @interface ScanViewController : UIViewController
 
+
+
 @end

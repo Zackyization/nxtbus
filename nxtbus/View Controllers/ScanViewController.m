@@ -13,8 +13,6 @@
 @interface ScanViewController () <QRCodeReaderDelegate>
 
 @property (nonatomic, strong) QRCodeReaderViewController *qrVC;
-@property AVCaptureDevice *flashLight;
-@property (weak, nonatomic) IBOutlet UISwitch *flashlightSwitch;
 
 @end
 
@@ -23,16 +21,14 @@
 AVCaptureSession *session;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.flashLight = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
+    [super viewDidLoad];    
     
     QRCodeReaderViewControllerBuilder *builder = [[QRCodeReaderViewControllerBuilder alloc] init];
     QRCodeReaderView *readerView = (QRCodeReaderView *)builder.readerView;
     
     // Setup overlay view
     QRCodeReaderViewOverlay *overlayView = (QRCodeReaderViewOverlay *)[readerView getOverlay];
-    overlayView.cornerColor = UIColor.redColor;
+    overlayView.cornerColor = UIColor.yellowColor;
     overlayView.cornerWidth = 6;
     overlayView.cornerLength = 75;
     overlayView.indicatorSize = CGSizeMake(250, 250);
@@ -75,28 +71,11 @@ AVCaptureSession *session;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.qrVC stopScanning];
-    
-    [self.flashLight setTorchMode:AVCaptureTorchModeOff];
-    [self.flashLight unlockForConfiguration];
-    
-    [self.flashlightSwitch setOn:NO];
 }
 
 #pragma mark - Actions
 - (IBAction)torchButtonPressed:(id)sender {
     [self.qrVC.codeReader toggleTorch];
-}
-
-- (IBAction)toggleTorchLight:(UISwitch *)sender {
-    if ([sender isOn]) {
-        if([self.flashLight isTorchAvailable] && [self.flashLight isTorchModeSupported:AVCaptureTorchModeOff]) {
-            [self.flashLight setTorchMode:AVCaptureTorchModeOn];
-            [self.flashLight unlockForConfiguration];
-        } else {
-            [self.flashLight setTorchMode:AVCaptureTorchModeOff];
-            [self.flashLight unlockForConfiguration];
-        }
-    }
 }
 
 #pragma mark - QRCodeReaderViewControllerDelegate methods
@@ -108,16 +87,11 @@ AVCaptureSession *session;
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader {
     [reader stopScanning];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)scanAction:(id)sender {
-    
 }
 
 // Check camera permissions
