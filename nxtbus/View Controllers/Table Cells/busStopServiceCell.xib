@@ -29,7 +29,7 @@
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-V6-bTb">
                         <rect key="frame" x="16" y="4" width="6" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.91764705882352937" green="0.37647058823529411" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21224841480000001" green="0.57065624000000004" blue="0.94941866399999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWb-4X-AX8">
                         <rect key="frame" x="136" y="11" width="168" height="29"/>
@@ -45,11 +45,6 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-n5-nF8">
-                        <rect key="frame" x="346" y="73" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="0"/>
-                    </button>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seatsAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="TJ0-f2-6tl">
                         <rect key="frame" x="30" y="46" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -116,7 +111,6 @@
                 <outlet property="busRouteNameLabel" destination="SXb-Hx-gBd" id="1Zq-aj-vrZ"/>
                 <outlet property="busServiceLabel" destination="DWJ-AE-KzI" id="lam-Md-fVP"/>
                 <outlet property="busTypeIndicatorImage" destination="Se0-Us-LFD" id="vEv-Tm-N0I"/>
-                <outlet property="favouriteBusButton" destination="wBw-n5-nF8" id="NAj-KX-qjD"/>
                 <outlet property="next3MinsLabel" destination="PxE-7H-ySi" id="ame-n1-52R"/>
                 <outlet property="next3TimeRemainingLabel" destination="NN3-0q-eJ5" id="zJc-My-hcj"/>
                 <outlet property="nextMinsLabel" destination="a2b-le-9lD" id="Gb6-4X-wU2"/>

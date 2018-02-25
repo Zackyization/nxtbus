@@ -11,6 +11,8 @@
 @interface BusStopViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSString *busStopID;
+@property (nonatomic) NSString *busStopTitle;
 @property (weak, nonatomic) IBOutlet UILabel *busStopIDLabel;
+@property (weak, nonatomic) IBOutlet UINavigationBar *modalNavigationBar;
 
 @end

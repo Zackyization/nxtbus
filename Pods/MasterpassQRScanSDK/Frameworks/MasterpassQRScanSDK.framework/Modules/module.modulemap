@@ -1,0 +1,6 @@
+framework module MasterpassQRScanSDK {
+  umbrella header "MasterpassQRScanSDK.h"
+
+  export *
+  module * { export * }
+}

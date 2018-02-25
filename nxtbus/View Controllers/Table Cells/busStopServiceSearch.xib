@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoCondensed-Regular.ttf">
+            <string>RobotoCondensed-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="BusStopServiceSearchCell" rowHeight="100" id="19J-H1-coL" customClass="busStopServiceSearch">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19J-H1-coL" id="YMr-3p-Yy4">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-V6-bTb">
+                        <rect key="frame" x="16" y="4" width="6" height="90"/>
+                        <color key="backgroundColor" red="0.21224841480000001" green="0.57065624000000004" blue="0.94941866399999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nzK-V6-bTb" secondAttribute="height" multiplier="1:15" id="Bld-2d-blf"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="995B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWJ-AE-KzI">
+                        <rect key="frame" x="30" y="27" width="196" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="196" id="ZlM-Rt-lX9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="45"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="16" id="Aj7-P8-BKZ"/>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leading" constant="30" id="RUF-Mi-kTM"/>
+                    <constraint firstItem="DWJ-AE-KzI" firstAttribute="leading" secondItem="nzK-V6-bTb" secondAttribute="trailing" constant="8" symbolic="YES" id="k3b-nM-MEG"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="top" secondItem="YMr-3p-Yy4" secondAttribute="topMargin" constant="-7" id="leN-Lv-FUp"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="DWJ-AE-KzI" secondAttribute="centerY" id="mL5-rQ-089"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="leading" secondItem="YMr-3p-Yy4" secondAttribute="leadingMargin" id="nf0-ZL-H4v"/>
+                    <constraint firstItem="nzK-V6-bTb" firstAttribute="centerY" secondItem="YMr-3p-Yy4" secondAttribute="centerY" id="rBB-Q7-GsK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="busStopServiceLabel" destination="DWJ-AE-KzI" id="iAl-Cc-8VR"/>
+            </connections>
+            <point key="canvasLocation" x="-32.5" y="-26"/>
+        </tableViewCell>
+    </objects>
+</document>
